@@ -25,7 +25,3 @@ Sample text here...
 ```
 Sample text here...
 ```
-
-
-[1]: https://pages.github.com/themes
-[2]: https://github.com/sighingnow/jekyll-gitbook/fork
