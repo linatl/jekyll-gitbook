@@ -1,8 +1,7 @@
 # linatl.github.io
 
-# h1 put here my part of the content of the readme file
+# put here my part of the content of the readme file
 
-Make Jelly site have a GitBook look!
 
 ## Want to use this template?
 
@@ -29,6 +28,4 @@ This theme can be used just as other [Jekyll themes][1].
 
 This work is open sourced under the Apache License, Version 2.0.
 Copyright 2019 Tao He.
-[1]: https://pages.github.com
-[2]: https://pages.github.com/themes
-[3]: https://github.com/sighingnow/jekyll-gitbook/fork
+
