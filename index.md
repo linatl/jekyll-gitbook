@@ -2,4 +2,5 @@
 layout: home
 ---
 
-Make Jelly site have a GitBook look!
+Put here the content for the home page
+
