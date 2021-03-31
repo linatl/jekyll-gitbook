@@ -4,7 +4,7 @@ longtitle:        linatl's Cheatsheets ~ OSCP and ...(maybe more in the future..
 author:           linatl
 email:            ####
 description: >
-  Build Jekyll site with the GitBook style.
+  linatl's OSCP Cheatsheets
 
 version:          1.0
 gitbook_version:  3.2.3
