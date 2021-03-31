@@ -6,7 +6,6 @@ tags: [OSCP, Cheatsheet]
 layout: post
 ---
 
-# Port Scanning
 
 ###### Nmap
 ```
