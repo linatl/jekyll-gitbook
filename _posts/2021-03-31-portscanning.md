@@ -2,6 +2,7 @@
 title: Port Scanning
 author: linatl
 date: 2021-03-31
+tags: [OSCP, Cheatsheet]
 layout: post
 ---
 
