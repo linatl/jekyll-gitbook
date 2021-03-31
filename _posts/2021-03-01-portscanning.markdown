@@ -19,7 +19,6 @@ UDP
 > nmap -sU -O -p- 10.10.10.10 > nmapudp10.txt
 
 non-ping scan: gebruik -Pn
-
 ```
 
 ###### Nmap script scan
