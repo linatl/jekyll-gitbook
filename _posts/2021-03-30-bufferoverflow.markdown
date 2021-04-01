@@ -1,5 +1,5 @@
 ---
-title: Website Enumeration
+title: Buffer Overflow
 author: linatl
 date: "2021-03-30 00:01"
 tags: [OSCP, Cheatsheet]
