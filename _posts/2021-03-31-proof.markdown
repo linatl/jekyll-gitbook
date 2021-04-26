@@ -1,0 +1,32 @@
+---
+title: Gathering Proof
+author: linatl
+date: "2021-03-31 00:01"
+tags: [OSCP, Cheatsheet]
+layout: post
+---
+
+###### Windows proof
+```
+whoami
+ipconfig
+type C:\Users\Administrator\Desktop\proof.txt
+type C:\Users\username\Desktop\proof.txt
+
+Alternatives:
+echo %userdomain%
+echo %username%
+type C:\Documents/ and/ Settings\Administrator\Desktop\proof.txt
+type C:\Documents^ and^ Settings\Administrator\Desktop\proof.txt
+```
+
+###### Linux proof
+```
+ifconfig
+id
+cat /username/proof.txt
+cat /root/proof.txt
+
+Alternatives:
+ip addr
+```
