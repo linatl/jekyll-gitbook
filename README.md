@@ -1,6 +1,5 @@
 # linatl.github.io
 
-# put here my part of the content of the readme file
 
 
 ## Want to use this template?
