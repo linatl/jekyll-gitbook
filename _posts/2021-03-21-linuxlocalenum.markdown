@@ -1,0 +1,90 @@
+---
+title: Linux Local Enumeration
+author: linatl
+date: "2021-03-21 00:01"
+tags: [OSCP, Cheatsheet]
+layout: post
+---
+
+###### System
+
+```
+cat /etc/*-release
+uname -m
+uname -a
+lsb_release -a   (Debian based OSs)
+arch
+
+pwd
+
+List installed packages
+dpkg -l  (Debian based OSs)
+rpm -qa  (CentOS / openSUSE )
+
+
+Running processes
+> ps -faux
+```
+
+
+###### Users
+```
+whoami
+id
+
+cat /etc/passwd
+    or:
+awk -F: '{ print }' /etc/passwd
+grep -vE "nologin|false" /etc/passwd
+```
+
+###### Network
+```
+All connections
+> netstat -ano (all)
+> ss -a
+
+Active connections
+> netstat -lntup
+> netstat -antup
+> ss -ut
+
+Network interfaces
+> ifconfig
+> ip addr
+```
+
+###### Password Hunting
+```
+cat /etc/shadow
+locate file.txt
+
+phpmyadmin
+> cat /etc/phpmyadmin/config-db.php
+> cat /etc/mysql/my.cnf
+```
+
+###### AV and Firewall
+```
+iptables -L
+```
+
+###### PrivEsc Checklists
+```
+https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/
+
+https://sushant747.gitbooks.io/total-oscp-guide/content/privilege_escalation_-_linux.html
+```
+
+###### Automated Tools
+```
+LinEnum
+https://github.com/rebootuser/LinEnum
+
+unix-privesc-check
+> unix-privesc-check standard
+> unix-privesc-check detailed
+
+Metasploit Local Exploit Suggester
+https://blog.rapid7.com/2015/08/11/metasploit-local-exploit-suggester-do-less-get-more/
+```
