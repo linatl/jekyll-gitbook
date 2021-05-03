@@ -12,13 +12,14 @@ layout: post
 > wget http://10.10.10.10/robots.txt
 
 Download headers
-curl -i 10.10.10.10
+> curl -i 10.10.10.10
 ```
 
 ###### nikto
 ```
 nikto on http
 > nikto -host 10.10.10.10 > nikto10.txt
+
 nikto on https
 > nikto -host 10.10.10.10 -port 443 -ssl > nikto10.txt
 ```
@@ -27,6 +28,7 @@ nikto on https
 ```
 non-recursive
 > dirb http://10.10.10.10 -r > dirb10.txt
+
 recursive
 > dirb http://10.10.10.10 > dirb10.txt
 ```
@@ -35,6 +37,7 @@ recursive
 ```
 Directories and files
 > gobuster dir -u 10.10.10.10 -w /usr/share/seclists/Discovery/Web-Content/common.txt
+
 Subdomains
 > gobuster dns -d test.com -w /usr/share/seclists/Discovery/DNS/namelist.txt -i
 ```
@@ -54,6 +57,6 @@ seclists dictionaries:
 
 ###### wp-scan
 ```
-wp-scan --url
+wp-scan
 > wpscan --url 10.10.10.10 --enumerate ap,at,cb,dbe > wpscan10.txt
 ```
