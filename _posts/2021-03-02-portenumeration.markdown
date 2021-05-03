@@ -16,7 +16,6 @@ https://book.hacktricks.xyz/
 > enum4linux 10.10.10.10 > enum4linux10.txt
 ```
 
-
 ###### 25 SMTP
 ```
 Enumerate usernames:
@@ -53,11 +52,8 @@ rpcinfo -s 10.10.10.10 > rpcinfo.txt
 ###### 389 LDAP
 ```
 ldapsearch -LLL -x -H ldap://10.10.10.10 -b '' -s base '(objectclass=*)' >> ldapsearch10.txt
-
 ldapsearch -LLL -x -H ldap://10.10.10.10 -b 'DC=DOMAIN,DC=LOCAL' >> ldapsearch10.txt
-
 ```
-
 
 ###### 445 SMB
 ```
@@ -82,8 +78,8 @@ Other protocols with crackmapexec: ssh,ldap,mssql,winrm
 
 ###### NFS 2049
 ```
-showmount -e 10.10.10.10
-nmap --script=nfs-showmount -oN mountable_shares 10.10.10.10
+> showmount -e 10.10.10.10
+> nmap --script=nfs-showmount -oN mountable_shares 10.10.10.10
 ```
 
 ###### 3306 MYSQL
