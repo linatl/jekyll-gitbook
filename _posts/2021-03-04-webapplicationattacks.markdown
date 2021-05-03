@@ -31,7 +31,6 @@ https://blog.cobalt.io/a-pentesters-guide-to-sql-injection-sqli-16fd570c3532
 ###### Wordpress Panel
 ```
 Upload webshell in a plugin
-
 > cp /usr/share/seclists/Web-Shells/Wordpress/plugin-shell.php ./
 > zip plugin-shell.zip plugin-shell.php
 
