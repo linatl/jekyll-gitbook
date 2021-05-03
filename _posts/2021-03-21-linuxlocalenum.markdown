@@ -9,33 +9,30 @@ layout: post
 ###### System
 
 ```
-cat /etc/*-release
-uname -m
-uname -a
-lsb_release -a   (Debian based OSs)
-arch
-
-pwd
+> cat /etc/*-release
+> uname -m
+> uname -a
+> lsb_release -a   (Debian based OSs)
+> arch
 
 List installed packages
-dpkg -l  (Debian based OSs)
-rpm -qa  (CentOS / openSUSE )
+> dpkg -l  (Debian based OSs)
+> rpm -qa  (CentOS / openSUSE )
 
 
 Running processes
 > ps -faux
 ```
 
-
 ###### Users
 ```
-whoami
-id
+> whoami
+> id
 
-cat /etc/passwd
+> cat /etc/passwd
     or:
-awk -F: '{ print }' /etc/passwd
-grep -vE "nologin|false" /etc/passwd
+> awk -F: '{ print }' /etc/passwd
+> grep -vE "nologin|false" /etc/passwd
 ```
 
 ###### Network
@@ -56,8 +53,8 @@ Network interfaces
 
 ###### Password Hunting
 ```
-cat /etc/shadow
-locate file.txt
+> cat /etc/shadow
+> locate file.txt
 
 phpmyadmin
 > cat /etc/phpmyadmin/config-db.php
