@@ -60,3 +60,9 @@ seclists dictionaries:
 wp-scan
 > wpscan --url 10.10.10.10 --enumerate ap,at,cb,dbe > wpscan10.txt
 ```
+
+###### Finding the webroot
+```
+Go to config dir (example: /etc/apache2/). Then:
+> grep -Ri DocumentRoot .
+```
