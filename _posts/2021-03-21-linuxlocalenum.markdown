@@ -10,7 +10,7 @@ layout: post
 
 ```
 > cat /etc/*-release
-> uname -m
+? uname -m
 > uname -a
 > lsb_release -a   (Debian based OSs)
 > arch
@@ -18,7 +18,6 @@ layout: post
 List installed packages
 > dpkg -l  (Debian based OSs)
 > rpm -qa  (CentOS / openSUSE )
-
 
 Running processes
 > ps -faux
@@ -54,16 +53,22 @@ Network interfaces
 ###### Password Hunting
 ```
 > cat /etc/shadow
+
+Search for stored passwords
 > locate file.txt
+> find /etc | grep *.Conf
 
 phpmyadmin
 > cat /etc/phpmyadmin/config-db.php
 > cat /etc/mysql/my.cnf
+
+Testing validity of found mysql credentials
+> mysql -username -password -e 'show databases;'
 ```
 
 ###### AV and Firewall
 ```
-iptables -L
+> iptables -L
 ```
 
 ###### PrivEsc Checklists
