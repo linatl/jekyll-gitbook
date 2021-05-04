@@ -29,30 +29,24 @@ https://book.hacktricks.xyz/pentesting/pentesting-smtp
 
 ###### 53 DNS
 ```
-
-```
-
-###### 88 Kerberos
-```
-
+DNS zone Transfer
+> dnsrecon -d domain.local -n 10.10.10.10 -t axfr
 ```
 
 ###### 110 POP3
 ```
-POP3
 https://book.hacktricks.xyz/pentesting/pentesting-pop
-
 ```
 
 ###### 111 RPCbind
 ```
-rpcinfo -s 10.10.10.10 > rpcinfo.txt
+> rpcinfo -s 10.10.10.10 > rpcinfo.txt
 ```
 
 ###### 389 LDAP
 ```
-ldapsearch -LLL -x -H ldap://10.10.10.10 -b '' -s base '(objectclass=*)' >> ldapsearch10.txt
-ldapsearch -LLL -x -H ldap://10.10.10.10 -b 'DC=DOMAIN,DC=LOCAL' >> ldapsearch10.txt
+> ldapsearch -LLL -x -H ldap://10.10.10.10 -b '' -s base '(objectclass=*)' >> ldapsearch10.txt
+> ldapsearch -LLL -x -H ldap://10.10.10.10 -b 'DC=DOMAIN,DC=LOCAL' >> ldapsearch10.txt
 ```
 
 ###### 445 SMB
@@ -61,13 +55,13 @@ Enumerate shares
 > smbclient -L //10.10.10.10
 > smbclient -L //10.10.10.10/
 > smbclient -L ////10.10.10.10//
-> smbclient -U TestUser -L ////10.10.10.10//
+> smbclient -U username -L ////10.10.10.10//
 
 Download all files from a directory recursively
 > smbclient //10.10.10.10/Share$ -U username -c "prompt OFF;recurse ON;mget *"
 
 SMB login
-> smbclient -U TestUser ////10.10.10.10//Share$
+> smbclient -U username ////10.10.10.10//Share$
 
 Crackmapexec
 > crackmapexec smb 10.10.10.10
@@ -80,14 +74,4 @@ Other protocols with crackmapexec: ssh,ldap,mssql,winrm
 ```
 > showmount -e 10.10.10.10
 > nmap --script=nfs-showmount -oN mountable_shares 10.10.10.10
-```
-
-###### 3306 MYSQL
-```
-
-```
-
-###### VNC 5800 & 5801 & 5900 & 5901
-```
-
 ```
