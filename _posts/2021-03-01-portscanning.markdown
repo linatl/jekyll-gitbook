@@ -35,6 +35,7 @@ scan all scripts in the vuln category
 > sudo nmap --script vuln 10.10.10.10
 ```
 
+
 ###### Bash port scan
 ```
 #!/bin/bash

