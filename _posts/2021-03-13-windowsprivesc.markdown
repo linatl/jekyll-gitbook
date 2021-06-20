@@ -24,6 +24,8 @@ impacket-secretsdump domain.local/username@10.10.10.10 -just-dc
 
 ###### Potato attacks
 ```
+If both SeChangeNotifyPrivilege and SeImpersonatePrivilege are enabled
+
 Hot Potato
 https://foxglovesecurity.com/2016/01/16/hot-potato/
 

@@ -17,7 +17,8 @@ https://sushant747.gitbooks.io/total-oscp-guide/content/privilege_escalation_win
 PayloadsAllTheThings
 https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md
 ```
-Both SeChangeNotifyPrivilege and SeImpersonatePrivilege are enabled
+
+
 ###### System
 ```
 > systeminfo
@@ -91,6 +92,15 @@ https://pentestlab.blog/2017/04/19/stored-credentials/
 
 (for older machines):
 > netsh firewall show state
+```
+
+###### WinPEAS
+```
+https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite
+x86
+cp /opt/privilege-escalation-awesome-scripts-suite/winPEAS/winPEASexe/binaries/x64/Release/winPEASx64.exe ./
+x64
+cp /opt/privilege-escalation-awesome-scripts-suite/winPEAS/winPEASexe/binaries/x86/Release/winPEASx86.exe ./
 ```
 
 ###### Automated tools ~ PowerUp

@@ -8,7 +8,7 @@ layout: post
 
 ###### Upgrading Shells
 ```
-Upgrade sh to bash using python2
+Upgrade sh to bash using python (2 or 3)
 > python -c 'import pty; pty.spawn("/bin/sh")'
 > python -c 'import pty; pty.spawn("/bin/bash")'
 

@@ -66,13 +66,6 @@ Run enum4linux, capture the data with Wireshark:
 https://richardkok.wordpress.com/2011/02/03/wireshark-determining-a-smb-and-ntlm-version-in-a-windows-environment/
 ```
 
-###### 1443 MSSQL
-```
-impacket-mssqlclient -windows-auth domain/sa:password@10.10.10.10
-impacket-mssqlclient sa:password@10.10.10.10
-
-```
-
 ###### 2049 NFS
 ```
 > showmount -e 10.10.10.10

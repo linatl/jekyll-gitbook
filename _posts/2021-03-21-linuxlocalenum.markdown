@@ -84,6 +84,9 @@ Testing validity of found mysql credentials
 
 ###### Automated Tools
 ```
+LinPEAS
+https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite
+
 LinEnum
 https://github.com/rebootuser/LinEnum
 

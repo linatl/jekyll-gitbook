@@ -49,6 +49,13 @@ Impacket tools
 > impacket-atexec domain/username@10.10.10.10 -hashes h1a2s3h4:h1a2s3h4
 ```
 
+###### 1443 MSSQL
+```
+impacket-mssqlclient -windows-auth domain/sa:password@10.10.10.10
+impacket-mssqlclient sa:password@10.10.10.10
+
+```
+
 ###### RDP 3389
 ```
 rdesktop
@@ -68,4 +75,15 @@ EvilWinRM
 ###### VNC 5800 & 5900
 ```
 > vncviewer 10.10.10.10:5900
+```
+
+###### 27017 MongoDB
+```
+https://docs.mongodb.com/manual/mongo/
+
+Unauthenticated connection
+> mongo --host 10.10.10.10
+
+Authenticated connection
+> mongo -u username -p password --host 10.10.10.10
 ```
