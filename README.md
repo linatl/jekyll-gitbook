@@ -6,3 +6,5 @@ I made this website to have an easy way to access my OSCP cheatsheets from multi
 
 These pages are mainly created for my own use; but feel free to utilise, copy or fork!
 
+View the website at: 
+https://linatl.github.io
