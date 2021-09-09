@@ -43,6 +43,9 @@ Running processes
     or:
 > awk -F: '{ print }' /etc/passwd
 > grep -vE "nologin|false" /etc/passwd
+
+Which files can we write as a certain group?
+> find / -type f -group groupname 2>/dev/null
 ```
 
 ###### Network

@@ -56,6 +56,13 @@ impacket-mssqlclient sa:password@10.10.10.10
 
 ```
 
+/////////////////////// TODO:
+###### 3306 MYSQL
+```
+
+```
+
+
 ###### RDP 3389
 ```
 rdesktop

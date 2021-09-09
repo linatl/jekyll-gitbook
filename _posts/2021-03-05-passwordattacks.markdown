@@ -39,3 +39,9 @@ john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt
 ```
 wpscan --url http://10.10.10.10/wp/wp-login.php --passwords /usr/share/wordlists/rockyou.txt --usernames username
 ```
+
+###### Other online tools
+```
+CyberChef (GHCQ)
+https://github.com/gchq/CyberChef
+```

