@@ -25,14 +25,23 @@ Start bash instance:
 
 ```
 
-###### Trick to improve a crappy shell
+###### Tricks to improve a crappy shell
 ```
-CTRL + Z out of the shell. Then:
+rlwrap
+> rlwrap -r nc -nvlp 443
+
+stty
+> python -c 'import pty; pty.spawn("/bin/bash")'
+next: CTRL + Z out of the shell. Then:
 > stty raw -echo
 > fg
 Back in the shell, run:
 > reset
-More in-depth explanation:
+> export SHELL=bash
+> export TERM=xterm-256color
+> stty rows <num> columns <cols>
+
+More in-depth explanation and more tricks:
 https://blog.ropnop.com/upgrading-simple-shells-to-fully-interactive-ttys/
 ```
 

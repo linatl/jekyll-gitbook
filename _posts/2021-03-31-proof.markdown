@@ -21,6 +21,14 @@ Alternatives:
 > more C:\Users\username\Desktop\proof.txt
 ```
 
+###### Hidden files & alternate data streams
+```
+dir /a
+
+dir /r /a
+more < hm.txt:root.txt
+```
+
 ###### Linux proof
 ```
 > ifconfig

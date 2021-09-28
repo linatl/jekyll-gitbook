@@ -88,13 +88,15 @@ Testing validity of found mysql credentials
 ###### Automated Tools
 ```
 LinPEAS
-https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite
+
+https://github.com/carlospolop/PEASS-ng
+> cp /opt/PEASS-ng/linPEAS/linpeas.sh ./
 
 LinEnum
 https://github.com/rebootuser/LinEnum
 
 unix-privesc-check
-cp /usr/share/unix-privesc-check/unix-privesc-check ./
+> cp /usr/share/unix-privesc-check/unix-privesc-check ./
 After uploading:
 > unix-privesc-check standard
 > unix-privesc-check detailed

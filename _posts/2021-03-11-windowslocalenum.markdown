@@ -96,11 +96,11 @@ https://pentestlab.blog/2017/04/19/stored-credentials/
 
 ###### WinPEAS
 ```
-https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite
+https://github.com/carlospolop/PEASS-ng
 x86
-cp /opt/privilege-escalation-awesome-scripts-suite/winPEAS/winPEASexe/binaries/x64/Release/winPEASx64.exe ./
+cp /opt/PEASS-ng/winPEAS/winPEASexe/binaries/x64/Release/winPEASx64.exe ./
 x64
-cp /opt/privilege-escalation-awesome-scripts-suite/winPEAS/winPEASexe/binaries/x86/Release/winPEASx86.exe ./
+cp /opt/PEASS-ng/winPEAS/winPEASexe/binaries/x86/Release/winPEASx86.exe ./
 ```
 
 ###### Automated tools ~ PowerUp
@@ -143,6 +143,10 @@ Getting the info for wes:
 > python3 /opt/wesng/wes.py --update
 > python3 /opt/wesng/wes.py --definitions=/opt/wesng/definitions.zip -o vulns.txt systeminfo.txt
 > python3 /opt/wesng/wes.py --definitions=/opt/wesng/definitions.zip --exploits-only --impact "Elevation of Privilege" --hide "Internet Explorer" Edge Flash -o vulns.txt systeminfo.txt
+> python3 /opt/wesng/wes.py --exploits-only --impact "Elevation of Privilege" --definitions=/opt/wesng/definitions.zip  systeminfo.txt
+
+> cat vulns.txt | cut -d "," -f 2,4,9 | uniq | sort
+
 ```
 
 ###### Metasploit Exploit Suggester

