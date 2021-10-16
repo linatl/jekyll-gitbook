@@ -5,7 +5,7 @@ date: "2021-03-03 00:01"
 tags: [OSCP, Cheatsheet]
 layout: post
 ---
- 
+
 ###### Downloading files/pages
 ```
 > curl http://10.10.10.10/robots.txt -o robots.txt
@@ -40,10 +40,32 @@ recursive
 ```
 Directories and files
 > gobuster dir -u 10.10.10.10 -w /usr/share/seclists/Discovery/Web-Content/common.txt
+> gobuster dir -u 10.10.10.10/ -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -o gobuster10.txt
+
+Also search for specific filetypes
+> gobuster dir -u 10.10.10.10/ -x php,asp,aspx -w /usr/share/seclists/Discovery/Web-Content/common.txt -o gobuster10-2.txt
 
 Subdomains
 > gobuster dns -d test.com -w /usr/share/seclists/Discovery/DNS/namelist.txt -i
 ```
+
+###### FFUF
+```
+dirbusting, recursive
+
+> ffuf -c -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -u https://10.10.10.10/FUZZ -recursion
+
+```
+///TODO test these:
+
+test ffuf -ac en ffuf -acc (auto calibration)
+-rate en -t (threads): threads should probably not be above default
+No -c for colorize
+ -o <outputfile>
+Optie: limiteer de responses die je wilt bewaren: alleen 200 en 401 oid.  ffuz -mc 200,401
+ffuf -s = silent mode. might speed it up some more
+
+
 
 ###### Web Directory Dictionaries
 ```

