@@ -52,20 +52,15 @@ Subdomains
 ###### FFUF
 ```
 dirbusting, recursive
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -u https://10.10.10.10/FUZZ -recursion
 
-> ffuf -c -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -u https://10.10.10.10/FUZZ -recursion
+With csv output
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -u https://10.10.10.10/FUZZ -recursion -o ffuf10.txt -of csv
+
+grep in the csv output:
+> cat ffuf10.txt | cut -d "," -f 2,5
 
 ```
-///TODO test these:
-
-test ffuf -ac en ffuf -acc (auto calibration)
--rate en -t (threads): threads should probably not be above default
-No -c for colorize
- -o <outputfile>
-Optie: limiteer de responses die je wilt bewaren: alleen 200 en 401 oid.  ffuz -mc 200,401
-ffuf -s = silent mode. might speed it up some more
-
-
 
 ###### Web Directory Dictionaries
 ```
