@@ -2,6 +2,7 @@
 title: Port Scanning
 author: linatl
 date: "2021-03-01 00:01"
+category: "PNPT"
 tags: [OSCP, Cheatsheet]
 layout: post
 ---
