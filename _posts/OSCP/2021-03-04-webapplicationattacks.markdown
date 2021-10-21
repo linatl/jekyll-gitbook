@@ -1,6 +1,7 @@
 ---
 title: Webapplication Attacks
 author: linatl
+category: "OSCP"
 date: "2021-03-04 00:01"
 tags: [OSCP, Cheatsheet]
 layout: post

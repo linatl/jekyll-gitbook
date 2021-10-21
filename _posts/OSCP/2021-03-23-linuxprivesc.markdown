@@ -1,6 +1,7 @@
 ---
 title: Linux Privilege Escalation
 author: linatl
+category: "OSCP"
 date: "2021-03-23 00:01"
 tags: [OSCP, Cheatsheet]
 layout: post

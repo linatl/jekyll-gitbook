@@ -1,6 +1,7 @@
 ---
 title: Windows File Transfers
 author: linatl
+category: "OSCP"
 date: "2021-03-10 00:01"
 tags: [OSCP, Cheatsheet]
 layout: post

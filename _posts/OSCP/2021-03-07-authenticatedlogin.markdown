@@ -1,6 +1,7 @@
 ---
 title: Authenticated Logins and connections
 author: linatl
+category: "OSCP"
 date: "2021-03-07 00:01"
 tags: [OSCP, Cheatsheet]
 layout: post
