@@ -17,6 +17,9 @@ https://sushant747.gitbooks.io/total-oscp-guide/content/privilege_escalation_win
 
 PayloadsAllTheThings
 https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md
+
+Fuzzysecurity
+https://www.fuzzysecurity.com/tutorials/16.html
 ```
 
 
@@ -99,9 +102,9 @@ https://pentestlab.blog/2017/04/19/stored-credentials/
 ```
 https://github.com/carlospolop/PEASS-ng
 x86
-cp /opt/PEASS-ng/winPEAS/winPEASexe/binaries/x64/Release/winPEASx64.exe ./
-x64
 cp /opt/PEASS-ng/winPEAS/winPEASexe/binaries/x86/Release/winPEASx86.exe ./
+x64
+cp /opt/PEASS-ng/winPEAS/winPEASexe/binaries/x64/Release/winPEASx64.exe ./
 ```
 
 ###### Automated tools ~ PowerUp

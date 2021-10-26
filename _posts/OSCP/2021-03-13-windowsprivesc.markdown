@@ -27,7 +27,11 @@ Check architecture of the host
 Check architecture of powershell environment:
 > [Environment]::Is64BitProcess
 
-If you get a shell trough a webserver running in a 32bit process but the host is 64bit, powershell will by default open a 32bit process.
+alternative to check arch in ps environment:
+> [IntPtr]::Size
+The value of this property is 4 in a 32-bit process, and 8 in a 64-bit process.
+
+For example: If you get a shell trough a webserver running in a 32bit process but the host is 64bit, powershell will by default open a 32bit process.
 This can be solved by specifically calling powershell with the following path:
 C:\Windows\sysNative\WindowsPowerShell\v1.0\powershell.exe
 
@@ -121,11 +125,20 @@ Run with (in powershell):
 > Invoke-Nightmare -NewUser "username" -NewPassword "password" -DriverName "PrintMe"
 ```
 
+###### HiveNightmare
+```
+https://github.com/GossiTheDog/HiveNightmare
+
+Works on all supported versions of Windows 10, where System Protection is enabled (should be enabled by default in most configurations).
+Check for vuln by checking if the patch for CVE-2021–36934 is installed, and by checking if system protection is enabled (with rstrui.exe ?)
+```
+
 ###### Windows (Kernel) Exploits
 ```
 MS10-059 (SecWiki)
+MS11-046 (SecWiki)
 MS16-032 (Use the one from Empire)
-MS15-051 (Secwiki)
+MS15-051 (SecWiki)
 ```
 
 ###### Kernel Exploits ~ Resources

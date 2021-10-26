@@ -6,7 +6,7 @@ date: "2021-03-02 00:01"
 tags: [OSCP, Cheatsheet]
 layout: post
 ---
- 
+
 ###### hacktricks.xyz
 ```
 https://book.hacktricks.xyz/
@@ -34,6 +34,10 @@ DNS zone Transfer
 ###### 111 RPCbind
 ```
 > rpcinfo -s 10.10.10.10 > rpcinfo.txt
+
+Mounting a share
+> mount -t cifs -o username=username //10.10.10.10/sharename /mnt/sharename
+The prompt asks for a password.
 ```
 
 ###### 389 LDAP
@@ -72,3 +76,7 @@ https://richardkok.wordpress.com/2011/02/03/wireshark-determining-a-smb-and-ntlm
 > showmount -e 10.10.10.10
 > nmap --script=nfs-showmount -oN mountable_shares 10.10.10.10
 ```
+
+Mounting a share
+mount -t cifs -o username=username //10.10.10.10/sharename /mnt/sharename
+Prompt asks for password.

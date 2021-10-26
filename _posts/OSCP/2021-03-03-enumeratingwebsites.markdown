@@ -52,15 +52,7 @@ Subdomains
 
 ###### FFUF
 ```
-dirbusting, recursive
 > ffuf -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -u https://10.10.10.10/FUZZ -recursion
-
-With csv output
-> ffuf -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -u https://10.10.10.10/FUZZ -recursion -o ffuf10.txt -of csv
-
-grep in the csv output:
-> cat ffuf10.txt | cut -d "," -f 2,5
-
 ```
 
 ###### Web Directory Dictionaries

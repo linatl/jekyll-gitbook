@@ -33,6 +33,9 @@ List installed packages
 
 Running processes
 > ps -faux
+
+Making a list of all files in a dir (bash):
+find . -type f > index.txt
 ```
 
 ###### Users

