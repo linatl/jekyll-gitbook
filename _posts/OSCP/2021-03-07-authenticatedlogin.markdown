@@ -129,8 +129,8 @@ XFreeRDP
 ###### WinRM 5985 & 5986
 ```
 EvilWinRM
-> ./evil-winrm.rb -i 10.10.10.10 -u username -H h1a2s3h4
-> ./evil-winrm.rb -i 10.10.10.10 -u username -p password
+> evil-winrm -i 10.10.10.10 -u username -H h1a2s3h4
+> evil-winrm -i 10.10.10.10 -u username -p password
 ```
 
 ###### VNC 5800 & 5900

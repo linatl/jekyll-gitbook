@@ -40,6 +40,14 @@ Mounting a share
 The prompt asks for a password.
 ```
 
+###### SNMP (UDP)
+```
+
+
+> snmpwalk -c public -v 1 10.10.10.10
+
+```
+
 ###### 389 LDAP
 ```
 > ldapsearch -LLL -x -H ldap://10.10.10.10 -b '' -s base '(objectclass=*)' >> ldapsearch10.txt

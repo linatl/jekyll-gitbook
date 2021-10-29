@@ -33,9 +33,18 @@ List installed packages
 
 Running processes
 > ps -faux
+```
+
+###### Files
+```
+Giving yourself permissions
+> chmod +x file.txt
+> chmod 777 file.txt
+> chown username:username file.txt
+> chown -R username:username directory/
 
 Making a list of all files in a dir (bash):
-find . -type f > index.txt
+> find . -type f > index.txt
 ```
 
 ###### Users

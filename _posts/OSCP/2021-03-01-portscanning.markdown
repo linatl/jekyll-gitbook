@@ -6,19 +6,28 @@ date: "2021-03-01 00:01"
 tags: [OSCP, Cheatsheet]
 layout: post
 ---
- 
-###### Nmap port scan
+
+###### Nmap TCP port scan
 ```
 Top1000
 > nmap -A 10.10.10.10
 
 Regular
-> nmap -A -p- 10.10.10.10 > nmap10.txt
-
-UDP
-> nmap -sU -O -p- 10.10.10.10 > nmapudp10.txt
+> nmap -A -p- -o nmap10.txt 10.10.10.10
 
 non-ping scan: gebruik -Pn
+```
+
+###### Nmap UDP port scan
+```
+UDP
+
+> nmap -sU -O -p- -o nmapudp10.txt 10.10.10.10
+
+
+udp scan on all ports often doesnt show the right results. Script scans are more likely to get a good read at whats open or not:
+> nmap -sU -sC --top-ports 20 -o nmapudp-top20-scripts 10.10.10.10
+
 ```
 
 ###### Nmap script scan
@@ -30,7 +39,7 @@ scan 1 script
 > nmap --script=http-iis-webdav-vuln 10.10.10.10
 
 scan all smb-vuln-* scripts
-> nmap --script=smb-vuln* 10.10.10.10 > nmapsmb10.txt
+> nmap --script=smb-vuln* 10.10.10.10 -o nmapsmb10.txt
 
 scan all scripts in the vuln category
 > sudo nmap --script vuln 10.10.10.10

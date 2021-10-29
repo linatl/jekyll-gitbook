@@ -35,6 +35,15 @@ https://www.fuzzysecurity.com/tutorials/16.html
 > ls env:
 ```
 
+###### Files
+```
+give yourself  full (F) permissions on a file:
+> cacls file.txt /e /p username:F
+
+Search a specific file
+> dir “\local.txt” /s
+```
+
 ###### Users
 ```
 > whoami
@@ -71,9 +80,6 @@ Looking for strings “password”
 
 Find these strings in config files
 > dir /s *pass* == *cred* == *vnc* == *.config*
-
-Search a specific file
-> dir “\local.txt” /s
 
 Wifi passwords
 > netsh wlan show profile
