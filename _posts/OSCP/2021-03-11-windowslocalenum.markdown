@@ -32,8 +32,11 @@ https://www.fuzzysecurity.com/tutorials/16.html
 > wmic logicaldisk
 > wmic logicaldisk get caption,description,providername
 > dir /R
-> dir -Force
+
 > ls env:
+> dir -Force
+> Get-Hotfix
+> Get-Hotfix KB4505903
 ```
 
 ###### Files
