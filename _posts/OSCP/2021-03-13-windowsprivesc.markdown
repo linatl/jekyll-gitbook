@@ -132,8 +132,8 @@ Or using a different CLSID:
 
 ###### Schtasks
 ```
-schtasks /query /fo LIST /v
-tasklist /SVC
+> schtasks /query /fo LIST /v
+> tasklist /SVC
 ```
 
 ###### PrintNightmare

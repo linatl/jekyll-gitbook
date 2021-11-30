@@ -130,19 +130,33 @@ Or PowerShell
 > Invoke-AllChecks | Out-File -Encoding ASCII output.txt
 ```
 
-###### Automated tools ~ Sherlock and Watson
+###### Automated tools ~ Sherlock
 ```
 Sherlock
 https://github.com/rasta-mouse/Sherlock
-Watson
-https://github.com/rasta-mouse/Watson
 
 On the target machine:
 CMD
-> powershell.exe -exec bypass -Command "& {Import-Module .\Sherlock.ps1; Find-AllVulns}" > output.txt
+> powershell.exe -exec bypass -Command "& {Import-Module .\Sherlock.ps1; Find-AllVulns}"
+
 Or PowerShell
 > Import-Module ./Sherlock.ps1
 > Find-AllVulns | Out-File -Encoding ASCII output.txt
+> PowerShell.exe -ExecutionPolicy Bypass -File .\jaws-enum.ps1
+```
+
+###### Automated tools ~ JAWS
+```
+JAWS
+https://github.com/411Hall/JAWS
+
+On the target machine:
+CMD
+> powershell.exe -ExecutionPolicy Bypass -File .\jaws-enum.ps1
+> powershell.exe -ExecutionPolicy Bypass -File .\jaws-enum.ps1 -OutputFilename JAWS-Enum.txt
+
+Or PowerShell
+> .\jaws-enum.ps1 -OutputFileName Jaws-Enum.txt
 ```
 
 ###### Windows Exploit Suggester - Next Generation
@@ -156,7 +170,6 @@ Getting the info for wes:
 > python3 /opt/wesng/wes.py --exploits-only --impact "Elevation of Privilege" --definitions=/opt/wesng/definitions.zip  systeminfo.txt
 
 > cat vulns.txt | cut -d "," -f 2,4,9 | uniq | sort
-
 ```
 
 ###### Metasploit Exploit Suggester
