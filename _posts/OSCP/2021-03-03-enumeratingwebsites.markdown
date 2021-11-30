@@ -43,8 +43,8 @@ Directories and files
 > gobuster dir -u 10.10.10.10 -w /usr/share/seclists/Discovery/Web-Content/common.txt
 > gobuster dir -u 10.10.10.10/ -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -o gobuster10.txt
 
-Also search for specific filetypes
-> gobuster dir -u 10.10.10.10/ -x php,asp,aspx -w /usr/share/seclists/Discovery/Web-Content/common.txt -o gobuster10-2.txt
+Also search for specific filetypes, weed out more error codes and dont check certificate validity.
+> gobuster dir -u 10.10.10.10/ -x php,asp,aspx -w /usr/share/seclists/Discovery/Web-Content/common.txt -o gobuster10-2.txt -b 400,404,500 -k
 
 Subdomains
 > gobuster dns -d test.com -w /usr/share/seclists/Discovery/DNS/namelist.txt -i

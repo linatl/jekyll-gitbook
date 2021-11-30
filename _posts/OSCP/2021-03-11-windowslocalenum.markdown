@@ -32,6 +32,7 @@ https://www.fuzzysecurity.com/tutorials/16.html
 > wmic logicaldisk
 > wmic logicaldisk get caption,description,providername
 > dir /R
+> dir -Force
 > ls env:
 ```
 
@@ -41,6 +42,7 @@ give yourself  full (F) permissions on a file:
 > cacls file.txt /e /p username:F
 
 Search a specific file
+> where /R c:\ file.exe
 > dir “\local.txt” /s
 ```
 
@@ -67,18 +69,24 @@ But looking for an existing group, like ‘> net localgroup administrators’ do
 > arp -a
 > route print
 > netstat -ano
+
+> tasklist /v | findstr [PID]
+> tasklist /v | findstr [servicename]
 ```
 
 ###### Password Hunting
 ```
-Looking for strings “password”
+Looking for a specific file
+> where /R c:\ file.exe
+
+Looking for strings “password” (takes a long time)
 > findstr /si password *.txt *.config *.ini
 > findstr /si password *.ini
 > findstr /si password *.config
 > findstr /si password *.txt
 > findstr /spin “password” *.*
 
-Find these strings in config files
+Find these strings in config files (takes a long time)
 > dir /s *pass* == *cred* == *vnc* == *.config*
 
 Wifi passwords

