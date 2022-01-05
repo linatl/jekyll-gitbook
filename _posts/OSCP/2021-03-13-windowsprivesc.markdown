@@ -7,37 +7,6 @@ tags: [OSCP, Cheatsheet]
 layout: post
 ---
 
-###### Tricks to improve a crappy shell
-```
-rlwrap
-> rlwrap -r nc -nvlp 443
-```
-
-###### Check Architecture of a PowerShell connection
-
-~|32 bit folder|64 bit folder|
----|---|---
-32-bit session | C:\Windows\system32\ | C:\Windows\sysNative
-64-bit session | C:\Windows\sysWOW64\ | C:\Windows\system32
-
-```
-Check architecture of the host
-> [system.environment]::Is64BitOperatingSystem
-
-Check architecture of powershell environment:
-> [Environment]::Is64BitProcess
-
-alternative to check arch in ps environment:
-> [IntPtr]::Size
-The value of this property is 4 in a 32-bit process, and 8 in a 64-bit process.
-
-For example: If you get a shell trough a webserver running in a 32bit process but the host is 64bit, powershell will by default open a 32bit process.
-This can be solved by specifically calling powershell with the following path:
-C:\Windows\sysNative\WindowsPowerShell\v1.0\powershell.exe
-
-More info:
-https://ss64.com/nt/syntax-64bit.html
-```
 
 
 /// To be tested:

