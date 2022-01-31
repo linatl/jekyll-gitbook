@@ -72,6 +72,8 @@ But looking for an existing group, like ‘> net localgroup administrators’ do
 > arp -a
 > route print
 > netstat -ano
+tcp only:
+> netstat -anoy
 
 > tasklist /v | findstr [PID]
 > tasklist /v | findstr [servicename]

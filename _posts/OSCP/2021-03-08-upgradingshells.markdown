@@ -17,6 +17,17 @@ layout: post
 ```
 rlwrap
 > rlwrap -r nc -nvlp 443
+
+Turning terminal echo off:
+1
+Ctrl + Z in the nc instance to move the shell to the background;
+2
+> stty raw echo; fg
+For also getting the ability to clear the screen:
+3
+In the nc shell:
+> export term=XTERM
+
 ```
 
 ###### Upgrading Shells

