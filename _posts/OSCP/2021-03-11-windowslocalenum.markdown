@@ -66,7 +66,7 @@ the ‘> net localgroup’ command only works when you are an actual user, not w
 But looking for an existing group, like ‘> net localgroup administrators’ does work.
 ```
 
-###### Network
+###### Network abd services
 ```
 > ipconfig /all
 > arp -a
@@ -77,6 +77,9 @@ tcp only:
 
 > tasklist /v | findstr [PID]
 > tasklist /v | findstr [servicename]
+
+In Powershell:
+> services 
 ```
 
 ###### Password Hunting
