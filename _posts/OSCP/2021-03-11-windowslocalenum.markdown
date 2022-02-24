@@ -66,7 +66,7 @@ the ‘> net localgroup’ command only works when you are an actual user, not w
 But looking for an existing group, like ‘> net localgroup administrators’ does work.
 ```
 
-###### Network abd services
+###### Network and services
 ```
 > ipconfig /all
 > arp -a
@@ -79,7 +79,7 @@ tcp only:
 > tasklist /v | findstr [servicename]
 
 In Powershell:
-> services 
+> services
 ```
 
 ###### Password Hunting
@@ -103,7 +103,10 @@ Wifi passwords
 
 Search for the string 'Password' in the registry
 > reg query HKLM /f Password /t Reg_SZ /s
-> reg query HKCU /f password /t REG_SZ /s
+> reg query HKCU /f password /t REG_SZ /s\
+
+Query the specific registry:
+> reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"
 
 And more:
 https://pentestlab.blog/2017/04/19/stored-credentials/
@@ -111,6 +114,8 @@ https://pentestlab.blog/2017/04/19/stored-credentials/
 
 ###### AV and Firewall
 ```
+Powershell execution
+
 > sc query windefend
 > sc queryex type= service
 > netsh firewall show config

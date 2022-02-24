@@ -8,8 +8,17 @@ layout: post
 ---
 
 
+///
+///
+ ///
+  ///
+   ///
+//////// To be tested:
+  ///
+ ///
+///
 
-/// To be tested:
+
 ###### Start Process with PowerShell
 ```
 How to use powershell to pop a second shell
@@ -82,11 +91,9 @@ query the specific registry entry (example):
 ```
 
 ###### RunAs
-###### Registry Tricks
-###### AlwaysInstallElevated
-###### Autorun
-###### Service Permissions
+
 ###### Unquoted Path
+
 ###### DLL Hijacking
 
 

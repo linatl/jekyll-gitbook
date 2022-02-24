@@ -34,9 +34,17 @@ DNS zone Transfer
 ###### 111 RPCbind
 ```
 > rpcinfo -s 10.10.10.10 > rpcinfo.txt
+> rpcclient -U '' 10.10.10.10
+> enumdomusers
+
+Text edit to put the usernames in a file:
+> cat output.txt | awk -F\[ '{print $2}' | awk -F \] '{print $1}' > users.lst
+
+More rpc enumeration:
+https://www.hackingarticles.in/active-directory-enumeration-rpcclient/
 
 Mounting a share
-> mount -t cifs -o username=username //10.10.10.10/sharename /mnt/sharename
+> mount -t cifs -o user=username //10.10.10.10/sharename /mnt/sharename
 The prompt asks for a password.
 ```
 
@@ -45,6 +53,15 @@ The prompt asks for a password.
 > snmpwalk -c public -v 1 10.10.10.10
 ```
 
+
+###### 389 LDAP query's
+```
+> ldapsearch -LLL -x -H ldap://10.10.10.10 -b '' -s base '(objectclass=*)'
+> ldapsearch -LLL -x -H ldap://10.10.10.10 -b 'DC=DOMAIN,DC=LOCAL'
+
+filter out anomalies:
+> cat output.txt | awk '{print $1}' | sort | uniq -c | sort -nr
+```
 
 ###### 445 SMB / Samba
 ```
@@ -60,10 +77,18 @@ SMB login
 Download all files from a directory recursively
 > smbclient //10.10.10.10/Share$ -U username -c "prompt OFF;recurse ON;mget *"
 
+Index all files from a fileshare and put the results in json output
+> crackmapexec smb 10.10.10.10 -u username -p password -M spider_plus
+> cat /tmp/cme_spider_plus/10.10.10.10.json | jq '. | keys'
+
+Password policy  
+> crackmapexec smb 10.10.10.10 --pass-pol
+
 Crackmapexec
 > crackmapexec smb 10.10.10.10
 > crackmapexec smb 10.10.10.10 -u username -p password
 > crackmapexec smb 10.10.10.10 -u username -p password --shares
+
 Other protocols with crackmapexec: ssh,ldap,mssql,winrm
 
 Finding Samba versions

