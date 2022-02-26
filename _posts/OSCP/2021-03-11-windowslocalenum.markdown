@@ -64,6 +64,14 @@ Search a specific file
 
 the ‘> net localgroup’ command only works when you are an actual user, not webroot, www-data or another system account.
 But looking for an existing group, like ‘> net localgroup administrators’ does work.
+
+Add user:
+> net user username Password! /add /domain
+
+Add User to a group:
+> net group "Exchange Windows Permissions" username /add
+> net localgroup "Remote Management Users" username /add
+
 ```
 
 ###### Network and services

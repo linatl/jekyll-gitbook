@@ -68,6 +68,11 @@ seclists dictionaries:
 87664   /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
 ```
 
+###### Make a wordlist with CEWL
+```
+> cewl http://10.10.10.10/directory/index.html -w cewl-wordlist.txt
+```
+
 ###### wp-scan
 ```
 > wpscan --url 10.10.10.10 --enumerate ap,at,cb,dbe -o wpscan10.txt

