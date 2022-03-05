@@ -54,6 +54,7 @@ Impacket tools
 Crackmapexec
 > crackmapexec smb 10.10.10.10
 > crackmapexec smb 10.10.10.10 -u username -p password
+> crackmapexec smb 10.10.10.10 -u username -H h1a2s3h4:h1a2s3h4
 > crackmapexec smb 10.10.10.10 -u username -p password --shares
 Other protocols with crackmapexec: ssh,ldap,mssql,winrm
 ```

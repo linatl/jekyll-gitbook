@@ -39,6 +39,14 @@ https://www.fuzzysecurity.com/tutorials/16.html
 > Get-Hotfix KB4505903
 ```
 
+###### Password policy
+```
+> net accounts
+
+For Active Directory from powershell:
+> Get-ADDefaultDomainPasswordPolicy
+```
+
 ###### Files
 ```
 give yourself  full (F) permissions on a file:

