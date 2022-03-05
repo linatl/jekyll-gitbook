@@ -7,11 +7,6 @@ tags: [OSCP, Cheatsheet]
 layout: post
 ---
 
-###### TMUX
-```
-
-```
-
 
 ###### Tricks to improve a crappy shell
 ```

