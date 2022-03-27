@@ -1,5 +1,5 @@
 ---
-title: Port Enumeration
+title: Port Enumeration and Logins
 author: linatl
 category: "OSCP"
 date: "2021-03-02 00:01"
@@ -12,10 +12,6 @@ layout: post
 https://book.hacktricks.xyz/
 ```
 
-###### Scripts
-```
-> enum4linux 10.10.10.10 > enum4linux10.txt
-```
 
 ###### FTP 21
 ```
@@ -175,6 +171,10 @@ sqlplus
 sysbda
 See sysbda for oracle as being kind of similar as sudo for linux, you can do more cause you have more privileges.
 > sqlplus username/password@10.10.10.10:1521/SID as sysdba
+
+File upload using odat:
+This will put the test.aspx local file in the c:\inetpub\wwwroot\ folder like file.aspx on the 10.10.10.10 server
+> python3 odat.py utlfile -s 10.10.10.10 -d SID -U username -P password --sysdba --putFile 'c:\inetpub\wwwroot\' file.aspx test.aspx
 ```
 
 
@@ -182,12 +182,11 @@ See sysbda for oracle as being kind of similar as sudo for linux, you can do mor
 ```
 > showmount -e 10.10.10.10
 > nmap --script=nfs-showmount -oN mountable_shares 10.10.10.10
-```
 
 Mounting a share
-mount -t cifs -o username=username //10.10.10.10/sharename /mnt/sharename
+> mount -t cifs -o username=username //10.10.10.10/sharename /mnt/attackersharename
 Prompt asks for password.
-
+```
 
 ###### 3306 MYSQL
 ```
@@ -211,8 +210,8 @@ rdesktop
 
 XFreeRDP
 > xfreerdp /u:domain\username /p:password /v:10.10.10.10:3389
+> xfreerdp /u:username /d:DOMAINNAME /pth:h1a2s3h4:h1a2s3h4 /v:10.10.10.10
 ```
-
 
 ###### WinRM 5985 & 5986
 ```

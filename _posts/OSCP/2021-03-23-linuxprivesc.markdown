@@ -34,10 +34,17 @@ https://blog.ropnop.com/upgrading-simple-shells-to-fully-interactive-ttys/
 List user privileges for sudo
 > sudo -l
 
+Find SUID binaries
+> find / -perm -4000 2>/dev/null
+
+finding SGID binaries:
+> find / -perm -u=s 2>/dev/null
+
 Nmap interactive
 > sudo nmap --interactive
 > nmap> !bash
 ```
+
 
 ###### crontabs
 ```
