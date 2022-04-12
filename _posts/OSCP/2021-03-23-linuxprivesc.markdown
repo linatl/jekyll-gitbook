@@ -84,10 +84,4 @@ https://gtfobins.github.io/
 Installing gcc libraries for cross compiling
 > sudo apt-get install gcc-multilib
 > gcc -m32 -Wall exploit.c -o exploit
-```
-
-###### Dirtyc0w
-```
-https://github.com/dirtycow/dirtycow.github.io/wiki/PoCs
-Note: the /proc/self/mem file is not writable on some RHEL/CentOS versions.
-```
+``

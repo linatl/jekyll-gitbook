@@ -7,21 +7,6 @@ tags: [OSCP, Cheatsheet]
 layout: post
 ---
 
-###### PrivEsc Checklists
-```
-Hacktricks XYZ
-https://book.hacktricks.xyz/windows/checklist-windows-privilege-escalation
-
-Sushant747
-https://sushant747.gitbooks.io/total-oscp-guide/content/privilege_escalation_windows.html
-
-PayloadsAllTheThings
-https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md
-
-Fuzzysecurity
-https://www.fuzzysecurity.com/tutorials/16.html
-```
-
 
 ###### System
 ```
@@ -90,9 +75,15 @@ Add User to a group:
 > netstat -ano
 tcp only:
 > netstat -anoy
+```
 
+###### Running services
+```
+> tasklist /SVC
 > tasklist /v | findstr [PID]
 > tasklist /v | findstr [servicename]
+
+> schtasks /query /fo LIST /v
 
 In Powershell:
 > services
@@ -128,18 +119,6 @@ And more:
 https://pentestlab.blog/2017/04/19/stored-credentials/
 ```
 
-###### AV and Firewall
-```
-Powershell execution
-
-> sc query windefend
-> sc queryex type= service
-> netsh firewall show config
-> netsh advfirewall firewall dump
-
-(for older machines):
-> netsh firewall show state
-```
 
 ###### WinPEAS
 ```
@@ -213,4 +192,20 @@ Getting the info for wes:
 ```
 Metasploit Local Exploit Suggester
 https://blog.rapid7.com/2015/08/11/metasploit-local-exploit-suggester-do-less-get-more/
+```
+
+
+###### PrivEsc Checklists
+```
+Hacktricks XYZ
+https://book.hacktricks.xyz/windows/checklist-windows-privilege-escalation
+
+Sushant747
+https://sushant747.gitbooks.io/total-oscp-guide/content/privilege_escalation_windows.html
+
+PayloadsAllTheThings
+https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md
+
+Fuzzysecurity
+https://www.fuzzysecurity.com/tutorials/16.html
 ```
