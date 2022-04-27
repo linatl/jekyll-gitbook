@@ -21,81 +21,81 @@ https://sushant747.gitbooks.io/total-oscp-guide/content/privilege_escalation_-_l
 
 ###### System
 ```
-> cat /etc/*-release
-? uname -m
-> uname -a
-> lsb_release -a   (Debian based OSs)
-> arch
+$ cat /etc/*-release
+$ uname -m
+$ uname -a
+$ lsb_release -a   (Debian based OSs)
+$ arch
 
 List installed packages
-> dpkg -l  (Debian based OSs)
-> rpm -qa  (CentOS / openSUSE )
+$ dpkg -l  (Debian based OSs)
+$ rpm -qa  (CentOS / openSUSE )
 
 Running processes
-> ps -faux
+$ ps -faux
 ```
 
 ###### Files
 ```
 Giving yourself permissions
-> chmod +x file.txt
-> chmod 777 file.txt
-> chown username:username file.txt
-> chown -R username:username directory/
+$ chmod +x file.txt
+$ chmod 777 file.txt
+$ chown username:username file.txt
+$ chown -R username:username directory/
 
 Making a list of all files in a dir (bash):
-> find . -type f > index.txt
+$ find . -type f > index.txt
 ```
 
 ###### Users
 ```
-> whoami
-> id
+$ whoami
+$ id
 
-> cat /etc/passwd
+$ cat /etc/passwd
     or:
-> awk -F: '{ print }' /etc/passwd
-> grep -vE "nologin|false" /etc/passwd
+$ awk -F: '{ print }' /etc/passwd
+$ grep -vE "nologin|false" /etc/passwd
 
 Which files can we write as a certain group?
-> find / -type f -group groupname 2>/dev/null
+$ find / -type f -group groupname 2>/dev/null
 ```
 
 ###### Network
 ```
 All connections
-> netstat -ano (all)
-> ss -a
+$ netstat -ano (all)
+$ ss -a
 
 Active connections
-> netstat -lntup
-> netstat -antup
-> ss -ut
+$ netstat -lntup
+$ netstat -antup
+$ ss -ut
 
 Network interfaces
-> ifconfig
-> ip addr
+$ ifconfig
+$ ip addr
 ```
 
 ###### Password Hunting
 ```
-> cat /etc/shadow
+$ cat /etc/shadow
 
 Search for stored passwords
-> locate file.txt
-> find /etc | grep *.Conf
+$ locate file.txt
+$ find /etc | grep *.Conf
 
 phpmyadmin
-> cat /etc/phpmyadmin/config-db.php
-> cat /etc/mysql/my.cnf
+$ cat /etc/phpmyadmin/config-db.php
+$ cat /etc/mysql/my.cnf
 
 Testing validity of found mysql credentials
-> mysql -username -password -e 'show databases;'
+$ mysql -username -password -e 'show databases;'
 ```
 
 ###### AV and Firewall
 ```
-> iptables -L
+$ iptables -L
 ```
 
 ###### Automated Tools
@@ -103,16 +103,16 @@ Testing validity of found mysql credentials
 LinPEAS
 
 https://github.com/carlospolop/PEASS-ng
-> cp /opt/PEASS-ng/linPEAS/linpeas.sh ./
+$ cp /opt/PEASS-ng/linPEAS/linpeas.sh ./
 
 LinEnum
 https://github.com/rebootuser/LinEnum
 
 unix-privesc-check
-> cp /usr/share/unix-privesc-check/unix-privesc-check ./
+$ cp /usr/share/unix-privesc-check/unix-privesc-check ./
 After uploading:
-> unix-privesc-check standard
-> unix-privesc-check detailed
+$ unix-privesc-check standard
+$ unix-privesc-check detailed
 
 Metasploit Local Exploit Suggester
 https://blog.rapid7.com/2015/08/11/metasploit-local-exploit-suggester-do-less-get-more/

