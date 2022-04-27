@@ -33,13 +33,6 @@ For Active Directory from powershell:
 $ Get-ADDefaultDomainPasswordPolicy
 ```
 
-
-###### Password spraying
-```
-
-```
-/////////////TODO:
-
 ###### Hashcat
 ```
 $ echo "$1$hash" > hash.txt

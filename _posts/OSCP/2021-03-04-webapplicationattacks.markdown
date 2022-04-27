@@ -33,11 +33,11 @@ Find out how many characters a wrong request is, then filter those out:
 $ wfuzz -u http://10.10.10.10:80/index.php/file=../../../../../../../../..FUZZ -w ./list.txt -hh 1000
 ```
 
-###### PHP wrappers
-//////////////////TODO:
-
 ###### Apache Log Poisoning
-//////////////////TODO:
+```
+Example:
+https://shahjerry33.medium.com/rce-via-lfi-log-poisoning-the-death-potion-c0831cebc16d
+```
 
 ###### SQL Cheatsheets
 ```

@@ -78,10 +78,13 @@ $ icacls "C:\Program Files\Some Subfolder" /grant "Builtin\Users":w
 and reboot after placing the payload.
 ```
 
-
 ###### DLL Hijacking
-/////////////////TODO:
-
+```
+3 prerequisites:
+Included in a running Process
+Result = "NAME NOT FOUND"
+Path ends with .dll
+```
 
 ###### Port Forwarding
 ```
