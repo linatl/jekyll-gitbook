@@ -41,6 +41,8 @@ Search a specific file
 $ where /R c:\ file.exe
 $ dir “\local.txt” /s
 ```
+///////////Add ICACLS
+
 
 ###### Users
 ```
@@ -88,8 +90,6 @@ $ schtasks /query /fo LIST /v
 In Powershell:
 $ services
 ```
-/////////////TODO: add restarting service with sc
-
 
 ###### Password Hunting
 ```

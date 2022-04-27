@@ -64,11 +64,19 @@ query the specific registry entry (example):
 $ reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"
 ```
 
-###### RunAs
-/////////////////TODO:
 
 ###### Unquoted Path
-/////////////////TODO:
+```
+finding services with autostart:
+$ wmic service get name,pathname,displayname,startmode | findstr /i auto | findstr /i /v "C:\Windows\\" | findstr /i /v """
+$ sc query "ServiceName"
+
+Folder permissions:
+$ icacls "C:\Program Files\Some Subfolder"
+$ icacls "C:\Program Files\Some Subfolder" /grant "Builtin\Users":w
+
+and reboot after placing the payload.
+```
 
 
 ###### DLL Hijacking
