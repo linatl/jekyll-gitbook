@@ -35,13 +35,12 @@ $ Get-ADDefaultDomainPasswordPolicy
 ###### Files
 ```
 give yourself  full (F) permissions on a file:
-$ cacls file.txt /e /p username:F
+$ icacls file.txt /e /p username:F
 
 Search a specific file
 $ where /R c:\ file.exe
 $ dir “\local.txt” /s
 ```
-///////////Add ICACLS
 
 
 ###### Users
