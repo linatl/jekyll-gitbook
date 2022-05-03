@@ -1,6 +1,6 @@
 ---
 title: Upgrading and Improving Shells
-author: linatl
+author: sKyW1per 
 category: "OSCP"
 date: "2021-03-08 00:01"
 tags: [OSCP, Cheatsheet]

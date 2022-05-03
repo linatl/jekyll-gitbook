@@ -1,6 +1,6 @@
 ---
 title: Linux Local Enumeration
-author: linatl
+author: sKyW1per 
 category: "OSCP"
 date: "2021-03-21 00:01"
 tags: [OSCP, Cheatsheet]

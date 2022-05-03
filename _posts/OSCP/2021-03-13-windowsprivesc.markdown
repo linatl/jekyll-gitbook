@@ -1,6 +1,6 @@
 ---
 title: Windows Privilege Escalation
-author: linatl
+author: sKyW1per 
 category: "OSCP"
 date: "2021-03-13 00:01"
 tags: [OSCP, Cheatsheet]
