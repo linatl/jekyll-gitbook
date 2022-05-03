@@ -1,15 +1,15 @@
 # Configurations
-title:            linatl's OSCP Cheatsheets
-longtitle:        linatl's Cheatsheets ~ OSCP and ...(maybe more in the future...)
-author:           linatl
+title:            sKyW1per's OSCP Cheatsheets
+longtitle:        sKyW1per's OSCP Cheatsheets
+author:           sKyW1per
 email:            ####
 description: >
-  linatl's OSCP Cheatsheets
+  sKyW1per's OSCP Cheatsheets
 
 version:          1.0
 gitbook_version:  3.2.3
 
-url:              'https://linatl.github.io'
+url:              'https://sKyW1per.github.io'
 baseurl:          '/'
 rss:              RSS
 
