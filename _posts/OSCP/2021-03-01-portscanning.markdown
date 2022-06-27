@@ -21,13 +21,10 @@ non-ping scan: gebruik -Pn
 ###### Nmap UDP port scan
 ```
 UDP
-
 $ nmap -sU -O -p- -oN nmapudp10.txt 10.10.10.10
-
 
 udp scan on all ports often doesnt show the right results. Script scans are more likely to get a good read at whats open or not:
 $ nmap -sU -sC --top-ports 20 -oN nmapudp-top20-scripts 10.10.10.10
-
 ```
 
 ###### Nmap script scan

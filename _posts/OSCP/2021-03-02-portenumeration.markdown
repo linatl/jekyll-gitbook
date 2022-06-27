@@ -70,6 +70,8 @@ The prompt asks for a password.
 ###### 161 SNMP (UDP)
 ```
 $ snmpwalk -c public -v 1 10.10.10.10
+$ snmpwalk -c public -v2c 10.10.10.10
+$ snmp-check 10.10.10.10
 ```
 
 ###### 389 LDAP query's

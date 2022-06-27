@@ -76,11 +76,10 @@ $ echo $PATH
 https://gtfobins.github.io/
 ```
 
-
 ###### Compiling C Exploits
 ```
 $ gcc exploit.c -o exploit
 Installing gcc libraries for cross compiling
 $ sudo apt-get install gcc-multilib
 $ gcc -m32 -Wall exploit.c -o exploit
-``
+```
