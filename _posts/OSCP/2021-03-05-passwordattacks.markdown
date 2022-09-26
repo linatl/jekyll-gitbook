@@ -15,13 +15,13 @@ $ hash-identifier
 
 ###### Bruteforcing with Hydra
 ```
-$ hydra -e nsr -l username -P /usr/share/wordlists/rockyou.txt 10.10.10.10 ssh
+$ hydra -e nsr -l username -P /usr/share/wordlists/rockyou.txt 192.168.1.1 ssh
 "-e nsr" = try "n" null password, "s" login as pass and/or "r" reversed login
 ```
 
 ###### Bruteforcing with Crackmapexec
 ```
-$ crackmapexec ssh 10.10.10.10 -u users.txt -p passwords.txt
+$ crackmapexec ssh 192.168.1.1 -u users.txt -p passwords.txt
 Other protocols with crackmapexec: ldap,mssql,winrm,smb
 ```
 
@@ -52,7 +52,7 @@ john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt
 
 ###### WPScan
 ```
-wpscan --url http://10.10.10.10/wp/wp-login.php --passwords /usr/share/wordlists/rockyou.txt --usernames username
+wpscan --url http://192.168.1.1/wp/wp-login.php --passwords /usr/share/wordlists/rockyou.txt --usernames username
 ```
 
 ###### Other online tools

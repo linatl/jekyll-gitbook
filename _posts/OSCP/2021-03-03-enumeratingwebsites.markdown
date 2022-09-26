@@ -9,42 +9,42 @@ layout: post
 
 ###### Downloading files/pages
 ```
-$ curl http://10.10.10.10/robots.txt -o robots.txt
-$ wget http://10.10.10.10/robots.txt
+$ curl http://192.168.1.1/robots.txt -o robots.txt
+$ wget http://192.168.1.1/robots.txt
 
 HTTP request showing headers
-$ curl -i http://10.10.10.10/
+$ curl -i http://192.168.1.1/
 Headers only
-$ curl -I http://10.10.10.10/
+$ curl -I http://192.168.1.1/
 
 Upload a file
-$ curl -T file.txt http://10.10.10.10/
+$ curl -T file.txt http://192.168.1.1/
 ```
 
 ###### nikto
 ```
 nikto on http
-$ nikto -host 10.10.10.10 > nikto10.txt
+$ nikto -host 192.168.1.1 > nikto10.txt
 nikto on https
-$ nikto -host 10.10.10.10 -port 443 -ssl > nikto10.txt
+$ nikto -host 192.168.1.1 -port 443 -ssl > nikto10.txt
 ```
 
 ###### dirb
 ```
 non-recursive
-$ dirb http://10.10.10.10 -r -o dirb10.txt
+$ dirb http://192.168.1.1 -r -o dirb10.txt
 recursive
-$ dirb http://10.10.10.10 -o dirb10.txt
+$ dirb http://192.168.1.1 -o dirb10.txt
 ```
 
 ###### gobuster
 ```
 Directories and files
-$ gobuster dir -u 10.10.10.10 -w /usr/share/seclists/Discovery/Web-Content/common.txt
-$ gobuster dir -u 10.10.10.10/ -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -o gobuster10.txt
+$ gobuster dir -u 192.168.1.1 -w /usr/share/seclists/Discovery/Web-Content/common.txt
+$ gobuster dir -u 192.168.1.1/ -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -o gobuster10.txt
 
 Also search for specific filetypes, weed out more error codes and dont check certificate validity.
-$ gobuster dir -u 10.10.10.10/ -x php,asp,aspx -w /usr/share/seclists/Discovery/Web-Content/common.txt -o gobuster10-2.txt -b 400,404,500 -k
+$ gobuster dir -u 192.168.1.1/ -x php,asp,aspx -w /usr/share/seclists/Discovery/Web-Content/common.txt -o gobuster10-2.txt -b 400,404,500 -k
 
 Subdomains
 $ gobuster dns -d test.com -w /usr/share/seclists/Discovery/DNS/namelist.txt -i
@@ -52,7 +52,7 @@ $ gobuster dns -d test.com -w /usr/share/seclists/Discovery/DNS/namelist.txt -i
 
 ###### FFUF
 ```
-$ ffuf -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -u https://10.10.10.10/FUZZ -recursion
+$ ffuf -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -u https://192.168.1.1/FUZZ -recursion
 ```
 
 ###### Web Directory Dictionaries
@@ -70,13 +70,13 @@ seclists dictionaries:
 
 ###### Make a wordlist by scraping a website with CEWL
 ```
-$ cewl http://10.10.10.10/
-$ cewl http://10.10.10.10/directory/index.html -w cewl-wordlist.txt
+$ cewl http://192.168.1.1/
+$ cewl http://192.168.1.1/directory/index.html -w cewl-wordlist.txt
 ```
 
 ###### wp-scan
 ```
-$ wpscan --url 10.10.10.10 --enumerate ap,at,cb,dbe -o wpscan10.txt
+$ wpscan --url 192.168.1.1 --enumerate ap,at,cb,dbe -o wpscan10.txt
 ```
 
 ###### Finding the webroot in Linux

