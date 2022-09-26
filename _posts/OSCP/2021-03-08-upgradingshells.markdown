@@ -1,6 +1,6 @@
 ---
 title: Upgrading and Improving Shells
-author: sKyW1per 
+author: sKyW1per
 category: "OSCP"
 date: "2021-03-08 00:01"
 tags: [OSCP, Cheatsheet]
@@ -28,8 +28,8 @@ $ export term=XTERM
 ###### Upgrading Shells
 ```
 Upgrade sh to bash using python (2 or 3)
-$ python -c 'import pty; pty.spawn("/bin/sh")'
-$ python -c 'import pty; pty.spawn("/bin/bash")'
+$ python3 -c 'import pty; pty.spawn("/bin/sh")'
+$ python3 -c 'import pty; pty.spawn("/bin/bash")'
 
 Correcting the $PATH variable for sh / bash
 $ export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin/usr/bin:/sbin:/binusr/local/sbin:/usr/local/bin:/usr/sbin:/bin

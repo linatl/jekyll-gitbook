@@ -1,6 +1,6 @@
 ---
 title: Webapplication Attacks
-author: sKyW1per 
+author: sKyW1per
 category: "OSCP"
 date: "2021-03-04 00:01"
 tags: [OSCP, Cheatsheet]
@@ -24,6 +24,7 @@ https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/SQL%20Injection
 
 ###### LFI file lists
 ```
+Linux LFI file directories
 https://github.com/hussein98d/LFI-files
 
 Then use the list to find out which ones work:
@@ -43,8 +44,8 @@ https://shahjerry33.medium.com/rce-via-lfi-log-poisoning-the-death-potion-c0831c
 ```
 Pentestmonkey
 https://pentestmonkey.net/category/cheat-sheet/sql-injection
-
-https://blog.cobalt.io/a-pentesters-guide-to-sql-injection-sqli-16fd570c3532
+BurpSuite
+https://portswigger.net/web-security/sql-injection/cheat-sheet
 ```
 
 ###### WebDAV

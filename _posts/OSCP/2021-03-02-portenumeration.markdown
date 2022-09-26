@@ -16,6 +16,11 @@ https://book.hacktricks.xyz/
 ###### FTP 21
 ```
 $ ftp 10.10.10.10
+switch active/passive mode
+$ passive
+switch binary/ASCII transfer
+$ binary
+
 Download all ftp files:
 $ wget --mirror 'ftp://username:password@10.10.10.10'
 ```
@@ -26,28 +31,34 @@ $ ssh username@10.10.10.10
 $ ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 username@10.10.10.10
 
 Login with ssh id_rsa
-Save the key in file id_rsa; then:
+Save the key in (for example) file id_rsa; then:
 $ chmod 600 id_rsa
 $ ssh -i id_rsa username@10.10.10.10
 ```
 
 ###### Telnet 23
 ```
+$ nc 10.10.10.10 23
 $ telnet 10.10.10.10 23
 ```
 
 ###### 25 SMTP
 ```
-Enumerate usernames:
+Enumerate usernames with VRFY, RCPT TO, EXPN:
 $ VRFY root
 $ VRFY idontexist
 Existing users = 252 response, non-existing = 550 response
+
+send email:
+https://www.shellhacks.com/send-email-smtp-server-command-line/
 ```
 
 ###### 53 DNS
 ```
 DNS zone Transfer
 $ dnsrecon -d domain.local -n 10.10.10.10 -t axfr
+
+
 ```
 
 ###### 111 RPCbind

