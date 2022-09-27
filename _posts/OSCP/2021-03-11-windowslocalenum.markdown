@@ -123,11 +123,8 @@ https://pentestlab.blog/2017/04/19/stored-credentials/
 
 ###### WinPEAS
 ```
-https://github.com/carlospolop/PEASS-ng
-x86
-cp /opt/PEASS-ng/winPEAS/winPEASexe/binaries/x86/Release/winPEASx86.exe ./
-x64
-cp /opt/PEASS-ng/winPEAS/winPEASexe/binaries/x64/Release/winPEASx64.exe ./
+bat & exe format
+https://github.com/carlospolop/PEASS-ng/releases
 ```
 
 ###### Automated tools ~ PowerUp

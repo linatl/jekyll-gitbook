@@ -96,13 +96,13 @@ $ mysql -username -password -e 'show databases;'
 ###### AV and Firewall
 ```
 $ iptables -L
+$ ufw status
 ```
 
 ###### Automated Tools
 ```
 LinPEAS
-
-https://github.com/carlospolop/PEASS-ng
+https://github.com/carlospolop/PEASS-ng/releases
 $ cp /opt/PEASS-ng/linPEAS/linpeas.sh ./
 
 LinEnum
