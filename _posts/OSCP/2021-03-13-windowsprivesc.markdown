@@ -91,24 +91,6 @@ Prerequisites:
 - Path ends with .dll
 ```
 
-###### Port Forwarding
-```
-https://github.com/jpillora/chisel
-1 upload chisel to the box
-
-2 start chisel on kali
-$ ./chisel_1.6.0_linux_amd64 server -p 8000 --reverse
-
-3 run chisel on the target
-$ .\c.exe client 192.168.119.1:8000 R:8888:localhost:8888
-
-4 see if the connection is made
-port 8888 on kali should be listening now:
-$ netstat -ntlp
-
-5 do stuff from kali on address 127.0.0.1 port 8888
-```
-
 ###### Kernel Exploits ~ Resources
 ```
 Seclists
