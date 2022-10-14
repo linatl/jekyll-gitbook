@@ -7,7 +7,7 @@ tags: [OSCP, Cheatsheet]
 layout: post
 ---
 
-###### Port Forwarding (windows target)
+###### Port Forwarding with chisel (windows target)
 ```
 https://github.com/jpillora/chisel
 1 upload chisel to the box
@@ -23,6 +23,20 @@ port 8888 on kali should be listening now:
 $ netstat -ntlp
 
 5 do stuff from kali on address 127.0.0.1 port 8888
+```
+
+###### SSH port forwarding (linux)
+```
+Local port forwarding
+$ sudo ssh -N -L 0.0.0.0:445:192.168.119.1:445 username@192.168.1.1
+
+Remote port forwarding
+$ ssh -N -R 192.168.1.1:2221:127.0.0.1:3306 kali@192.168.1.1
+
+Dynamic port Forwarding
+$ ssh -N -D 127.0.0.1:8080 username@192.168.1.1
+add to proxychains conf:
+$ socks4 	127.0.0.1 8080
 ```
 
 ###### Proxychains tunnel to a second target
@@ -43,10 +57,10 @@ add to /etc/proxychains.conf the following line:
 $ socks5 127.0.0.1 1080
 
 6 test the tunnel by executing a command to the target IP
-$ proxychains ping 192.168.100.2
+
 
 Note:
-Syn scanning isn't possible trough a proxy, especially annoying when ping is disabled. In this case Nmap can do port scans with options "-sT -Pn"
+Syn scanning isn't possible trough a proxy, especially annoying when ping is not usable. In this case Nmap can do port scans with options "-sT -Pn"
 So use for nmap for example:
 $ proxychains nmap -sT -Pn -n -p- 192.168.100.2
 ```

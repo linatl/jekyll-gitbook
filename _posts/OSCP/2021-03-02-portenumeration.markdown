@@ -220,6 +220,8 @@ $ mysql -u username -p password -P 3306 namedatabase
 ```
 rdesktop
 $ rdesktop -d domain -u username -p password 192.168.1.1:3389
+In 4k:
+$ rdesktop -g 100%@200 -u student -p lab 192.168.1.1
 
 XFreeRDP
 $ xfreerdp /u:domain\username /p:password /v:192.168.1.1:3389

